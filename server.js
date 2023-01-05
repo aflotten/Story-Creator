@@ -39,6 +39,7 @@ app.use(express.static('public'));
 // const userApiRoutes = require('./routes/users-api');
 // const widgetApiRoutes = require('./routes/widgets-api');
 // const usersRoutes = require('./routes/users');
+   const loginRoutes = require("./routes/login-route");
 
 // // Mount all resource routes
 // // Note: Feel free to replace the example routes below with your own
@@ -46,6 +47,23 @@ app.use(express.static('public'));
 // app.use('/api/users', userApiRoutes);
 // app.use('/api/widgets', widgetApiRoutes);
 // app.use('/users', usersRoutes);
+   app.use('/login', loginRoutes)
+
+// const userApiRoutes = require('./routes/users-api');
+// const widgetApiRoutes = require('./routes/widgets-api');
+// const usersRoutes = require('./routes/users');
+// const loginRoutes = require('./routes/login-route');
+// const registerRoutes = require('./routes/register-route');
+// const indexRoutes = require('./routes/index');
+// // Mount all resource routes
+// // Note: Feel free to replace the example routes below with your own
+// // Note: Endpoints that return data (eg. JSON) usually start with `/api`
+// app.use('/api/users', userApiRoutes);
+// app.use('/api/widgets', widgetApiRoutes);
+// app.use('/users', usersRoutes);
+app.use('/login', loginRoutes);
+// app.use('/register', registerRoutes);
+// app.use('/', indexRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -56,9 +74,9 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.get('/login', (req, res) => {
-  res.render('login');
-});
+// app.get('/login', (req, res) => {
+//   res.render('login');
+// });
 
 app.get('/register', (req, res) => {
   res.render('register');

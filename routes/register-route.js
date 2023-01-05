@@ -1,12 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-// Get method for displaying login
 router.get('/', (req, res) => {
-  res.render('login')
+  res.render('register');
 });
 
-//post method for sending loggin credentials
 router.post('/', (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
