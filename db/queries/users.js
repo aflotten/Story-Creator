@@ -21,4 +21,4 @@ const getUserByEmail = (email) => {
     });
 };
 
-module.exports = { getUsers, getUserId };
+module.exports = { getUsers, getUserById, getUserByEmail };
