@@ -4,12 +4,30 @@ $tuscany :#C49991;
 $blue : #279AF1;
 $grey : #60656F;
 $black : #131112;
-$main-font: 'Open Sans', sans-serif;
-$sub-font: 'Playfair Display', serif;
-*{
+$sub-font: 'Open Sans', sans-serif;
+$main-font: 'Playfair Display', serif;
+main{
   color :$black;
   background-color: $white;
+  margin: 0;
 }
-.story{
+// .story{
 
+// }
+#navbar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items:center ;
+  width: 100%;
+  height : 5rem;
+  font-family: $main-font;
+  background-color:$grey;
+}
+
+.user{
+  display: flex;
+  justify-content: space-between;
+  width: 10%;
+  flex-direction: row;
 }
