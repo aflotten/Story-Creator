@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
   res.render('login')
 });
 
-//post method for sending loggin credentials
+// Post method for sending loggin credentials
 router.post('/', (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
