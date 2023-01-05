@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
+// Get method for displaying login
 router.get('/', (req, res) => {
   res.render('login')
 });
 
-<<<<<<< HEAD
-=======
+//post method for sending loggin credentials
 router.post('/', (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
@@ -15,5 +15,4 @@ router.post('/', (req, res) => {
   res.render('index')
 });
 
->>>>>>> 2ccf18250a77dffe5165e1e1a9625ea231c2e35d
 module.exports = router;
