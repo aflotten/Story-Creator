@@ -64,6 +64,22 @@ app.get('/register', (req, res) => {
   res.render('register');
 });
 
+app.post('/login', (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+  console.log(email);
+  console.log(password);
+  res.render('index')
+});
+
+app.post('/register', (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+  console.log(email);
+  console.log(password);
+  res.render('index')
+});
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
