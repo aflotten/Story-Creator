@@ -1,18 +1,15 @@
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+$darkred : rgb(100,3,1);
+$white :  #F7F7FF;
+$tuscany :#C49991;
+$blue : #279AF1;
+$grey : #60656F;
+$black : #131112;
+$main-font: 'Open Sans', sans-serif;
+$sub-font: 'Playfair Display', serif;
+*{
+  color :$black;
+  background-color: $white;
+}
+.story{
 
-  background: rgb(163, 208, 219);
-  background: linear-gradient(
-    227deg,
-    rgba(163, 208, 219, 1) 0%,
-    rgba(163, 176, 219, 1) 20%,
-    rgba(163, 173, 219, 1) 34%,
-    rgba(163, 219, 208, 1) 59%,
-    rgba(163, 208, 219, 1) 74%,
-    rgba(163, 208, 219, 1) 100%
-  );
 }
