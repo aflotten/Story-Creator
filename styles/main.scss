@@ -1,4 +1,4 @@
-$darkred : rgb(100,3,1);
+
 $white :  #F7F7FF;
 $tuscany :#C49991;
 $blue : #279AF1;
@@ -24,7 +24,13 @@ main{
   font-family: $main-font;
   background-color:$grey;
 }
-
+#navbar a{
+  text-decoration: none;
+  color: inherit;
+}
+#navbar a:hover{
+  color: #279AF1;
+}
 .user{
   display: flex;
   justify-content: space-between;
