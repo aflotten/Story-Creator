@@ -12,7 +12,7 @@ router.post('/', (req, res) => {
   const password = req.body.password;
   console.log(email);
   console.log(password);
-  res.render('index')
+  res.render('index');
 });
 
 module.exports = router;

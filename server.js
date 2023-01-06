@@ -53,9 +53,7 @@ app.use(express.static('public'));
 // // Note: Feel free to replace the example routes below with your own
 // // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 
-// app.use('/login', loginRoutes)
-// app.use('/register', registerRoutes);
-// app.use('/', indexRoutes);
+
 
 // Note: mount other resources here, using the same pattern above
 
@@ -80,6 +78,7 @@ app.post('/login', (req, res) => {
   const password = req.body.password;
   console.log(email);
   console.log(password);
+
   res.render('index')
 });
 
