@@ -41,20 +41,22 @@ app.use(express.static('public'));
 // const usersRoutes = require('./routes/users');
    const loginRoutes = require("./routes/login-route");
 
+
 // // Mount all resource routes
 // // Note: Feel free to replace the example routes below with your own
 // // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 
 // const loginRoutes = require('./routes/login-route');
-// const registerRoutes = require('./routes/register-route');
+const registerRoutes = require('./routes/register-route');
 // const indexRoutes = require('./routes/index');
 
 // // Mount all resource routes
 // // Note: Feel free to replace the example routes below with your own
 // // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 
-
-
+// app.use('/login', loginRoutes)
+app.use('/register', registerRoutes);
+// app.use('/', indexRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -82,13 +84,13 @@ app.post('/login', (req, res) => {
   res.render('index')
 });
 
-app.post('/register', (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
-  console.log(email);
-  console.log(password);
-  res.render('index')
-});
+// app.post('/register', (req, res) => {
+//   const email = req.body.email;
+//   const password = req.body.password;
+//   console.log(email);
+//   console.log(password);
+//   res.render('index')
+// });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
