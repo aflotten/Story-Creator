@@ -11,17 +11,18 @@ router.get('/', (req, res) => {
 // Post method for sending loggin credentials
 router.post('/', (req, res) => {
   const email = req.body.email;
-  const password = req.body.password
+  const password = req.body.password;
   userQueries.getUserByEmail(email)
   .then(user => {
     if(user === undefined) {
-      res.send({error: "error logging in user"})
+      res.send({error: "error logging in user"});
       return;
     } else if (bcrypt.compareSync(password, user.password) !== true) {
-      res.send({error: "error logging in user"})
+      res.send({error: "error logging in user"});
+      return;
     } else {
       req.session.userId = user.id;
-      res.send("Successfully logged in user!")
+      res.send("Successfully logged in user!");
     }
   })
   .catch(error => res.send(error))
