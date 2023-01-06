@@ -47,7 +47,7 @@ app.use(express.static('public'));
 // // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 
 // const loginRoutes = require('./routes/login-route');
-const registerRoutes = require('./routes/register-route');
+// const registerRoutes = require('./routes/register-route');
 // const indexRoutes = require('./routes/index');
 
 // // Mount all resource routes
@@ -55,7 +55,7 @@ const registerRoutes = require('./routes/register-route');
 // // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 
 // app.use('/login', loginRoutes)
-app.use('/register', registerRoutes);
+// app.use('/register', registerRoutes);
 // app.use('/', indexRoutes);
 // Note: mount other resources here, using the same pattern above
 
@@ -69,6 +69,10 @@ app.get('/', (req, res) => {
 
 app.get('/login', (req, res) => {
   res.render('login');
+});
+//this is for testing it should be additions/:id
+app.get('/additions', (req, res) => {
+  res.render('additions');
 });
 
 app.get('/register', (req, res) => {
