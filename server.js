@@ -34,39 +34,6 @@ app.use(
 );
 app.use(express.static('public'));
 
-// // Get method for displaying login
-// router.get('/', (req, res) => {
-//   res.render('login')
-// });
-
-// // Post method for sending loggin credentials
-// router.post('/', (req, res) => {
-//   const email = req.body.email;
-//   const password = req.body.password;
-//   console.log(email);
-//   console.log(password);
-//   res.render('index');
-// });
-
-// router.get('/', (req, res) => {
-//   res.render('register');
-// });
-
-// router.post('/', (req, res) => {
-//   const user = req.body;
-//   user.password = bcrypt.hashSync(user.password, 10);
-//   userQueries.addUser(user)
-//   .then(user => {
-//     if(!user) {
-//       res.send({error: "error adding user"})
-//       return;
-//     }
-//     req.session.userId = user.id;
-//     res.send("Successfully added user!")
-//   })
-//   .catch(error => res.send(error))
-// });
-
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 
@@ -79,6 +46,12 @@ const registerRoutes = require('./routes/register-route');
 const indexRoutes = require('./routes/index');
 const additionsRoutes = require('./routes/additions');
 
+// // Mount all resource routes
+// // Note: Feel free to replace the example routes below with your own
+// // Note: Endpoints that return data (eg. JSON) usually start with `/api`
+
+// Note: mount other resources here, using the same pattern above
+
 app.use('/login', loginRoutes)
 app.use('/register', registerRoutes);
 app.use('/', indexRoutes);
@@ -86,8 +59,6 @@ app.use('/additions',additionsRoutes);
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
-
-
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
