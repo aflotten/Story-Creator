@@ -14,12 +14,22 @@
     </div>
     <a class="logo" href="/">
     <i class="fa-solid fa-book-open-reader"></i></a>
-    <div id ='right-menu'>
-      <div>
-        <a href="/register">
-        <i class="fa-sharp fa-solid fa-right-to-bracket"></i>Sign Up </div></a>
-        <a href="/login"><div><i class="fa-solid fa-key"></i>Login</div></a>
-    </div>
+
+    <% if(typeof userByID !== 'undefined'){ %>
+      <h5>Logged in as: <%= userByID.name %>! </h5>
+      <form class="form-inline" action="/logout" method="POST">
+        <div class="form-group mb-2">
+          <button type="submit" class="btn btn-primary">Logout</button>
+        </div>
+      </form>
+    <% console.log(userByID)} else{ %>
+      <div id ='right-menu'>
+        <div>
+          <a href="/register">
+          <i class="fa-sharp fa-solid fa-right-to-bracket"></i>Sign Up </div></a>
+          <a href="/login"><div><i class="fa-solid fa-key"></i>Login</div></a>
+      </div>
+   <% } %>
   </nav>
 
 </header>

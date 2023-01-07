@@ -22,7 +22,7 @@ router.post('/', (req, res) => {
       return;
     } else {
       req.session.userId = user.id;
-      res.send("Successfully logged in user!");
+      res.render('index', {userByID: userQueries.getUserById(req.session.userId)});
     }
   })
   .catch(error => res.send(error))
