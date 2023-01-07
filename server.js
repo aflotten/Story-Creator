@@ -34,39 +34,6 @@ app.use(
 );
 app.use(express.static('public'));
 
-// // Get method for displaying login
-// router.get('/', (req, res) => {
-//   res.render('login')
-// });
-
-// // Post method for sending loggin credentials
-// router.post('/', (req, res) => {
-//   const email = req.body.email;
-//   const password = req.body.password;
-//   console.log(email);
-//   console.log(password);
-//   res.render('index');
-// });
-
-// router.get('/', (req, res) => {
-//   res.render('register');
-// });
-
-// router.post('/', (req, res) => {
-//   const user = req.body;
-//   user.password = bcrypt.hashSync(user.password, 10);
-//   userQueries.addUser(user)
-//   .then(user => {
-//     if(!user) {
-//       res.send({error: "error adding user"})
-//       return;
-//     }
-//     req.session.userId = user.id;
-//     res.send("Successfully added user!")
-//   })
-//   .catch(error => res.send(error))
-// });
-
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 
@@ -74,17 +41,14 @@ app.use(express.static('public'));
 // // Note: Feel free to replace the example routes below with your own
 // // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 
-// const loginRoutes = require('./routes/login-route');
+const loginRoutes = require('./routes/login-route');
 const registerRoutes = require('./routes/register-route');
-// const indexRoutes = require('./routes/index');
+const indexRoutes = require('./routes/index');
 
 // // Mount all resource routes
 // // Note: Feel free to replace the example routes below with your own
 // // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 
-// app.use('/login', loginRoutes)
-app.use('/register', registerRoutes);
-// app.use('/', indexRoutes);
 // Note: mount other resources here, using the same pattern above
 
 app.use('/login', loginRoutes)
@@ -94,35 +58,6 @@ app.use('/', indexRoutes);
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
-
-app.get('/', (req, res) => {
-  res.render('index');
-});
-
-app.get('/login', (req, res) => {
-  res.render('login');
-});
-
-app.get('/register', (req, res) => {
-  res.render('register');
-});
-
-app.post('/login', (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
-  console.log(email);
-  console.log(password);
-
-  res.render('index')
-});
-
-// app.post('/register', (req, res) => {
-//   const email = req.body.email;
-//   const password = req.body.password;
-//   console.log(email);
-//   console.log(password);
-//   res.render('index')
-// });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
