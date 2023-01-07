@@ -1,5 +1,8 @@
-// const express = require('express');
-// const router = express.Router();
-// const {} = require(../)
+const express = require('express');
+const router = express.Router();
 
+router.get('/', (req, res) => {
+  res.render('additions');
+});
 
+module.exports = router;

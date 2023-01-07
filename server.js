@@ -44,6 +44,7 @@ app.use(express.static('public'));
 const loginRoutes = require('./routes/login-route');
 const registerRoutes = require('./routes/register-route');
 const indexRoutes = require('./routes/index');
+const additionsRoutes = require('./routes/additions-route');
 
 // // Mount all resource routes
 // // Note: Feel free to replace the example routes below with your own
@@ -54,7 +55,7 @@ const indexRoutes = require('./routes/index');
 app.use('/login', loginRoutes)
 app.use('/register', registerRoutes);
 app.use('/', indexRoutes);
-
+app.use('/additions',additionsRoutes);
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
