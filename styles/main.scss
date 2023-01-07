@@ -1,6 +1,7 @@
 
 $white :  #F7F7FF;
 $tuscany :#C49991;
+$tuscany-dark:#886963;
 $blue : #279AF1;
 $grey : #60656F;
 $black : #131112;
@@ -11,14 +12,11 @@ main{
   color :$black;
   background-color: $white;
   margin: 0;
+  padding:3rem 3rem;
+  width:100vw;
+  height: calc(100vh - 5rem);
 }
-// .story{
 
-// }
-main{
- padding-top: 5rem;
- padding:0 3rem;
-}
 h1{
   margin:0
 }
@@ -91,6 +89,9 @@ header{
   height: 2rem;
   border:none;
   border-radius:5em;
+}
+.add-button:hover{
+  background-color: $tuscany-dark;
 }
 .over-counter{
   color:red;
