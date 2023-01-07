@@ -3,10 +3,12 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const userQueries = require('../db/queries/users');
 
+// Get method for rendering registration page
 router.get('/', (req, res) => {
   res.render('register');
 });
 
+// Post method for pushing user to DB
 router.post('/', (req, res) => {
   const user = req.body;
   user.password = bcrypt.hashSync(user.password, 10);

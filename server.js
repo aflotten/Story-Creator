@@ -74,9 +74,9 @@ app.use(express.static('public'));
 // // Note: Feel free to replace the example routes below with your own
 // // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 
-// const loginRoutes = require('./routes/login-route');
+const loginRoutes = require('./routes/login-route');
 const registerRoutes = require('./routes/register-route');
-// const indexRoutes = require('./routes/index');
+const indexRoutes = require('./routes/index');
 
 // // Mount all resource routes
 // // Note: Feel free to replace the example routes below with your own
