@@ -34,20 +34,48 @@ app.use(
 );
 app.use(express.static('public'));
 
+// // Get method for displaying login
+// router.get('/', (req, res) => {
+//   res.render('login')
+// });
+
+// // Post method for sending loggin credentials
+// router.post('/', (req, res) => {
+//   const email = req.body.email;
+//   const password = req.body.password;
+//   console.log(email);
+//   console.log(password);
+//   res.render('index');
+// });
+
+// router.get('/', (req, res) => {
+//   res.render('register');
+// });
+
+// router.post('/', (req, res) => {
+//   const user = req.body;
+//   user.password = bcrypt.hashSync(user.password, 10);
+//   userQueries.addUser(user)
+//   .then(user => {
+//     if(!user) {
+//       res.send({error: "error adding user"})
+//       return;
+//     }
+//     req.session.userId = user.id;
+//     res.send("Successfully added user!")
+//   })
+//   .catch(error => res.send(error))
+// });
+
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-// const userApiRoutes = require('./routes/users-api');
-// const widgetApiRoutes = require('./routes/widgets-api');
-// const usersRoutes = require('./routes/users');
-   const loginRoutes = require("./routes/login-route");
-
 
 // // Mount all resource routes
 // // Note: Feel free to replace the example routes below with your own
 // // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 
 // const loginRoutes = require('./routes/login-route');
-// const registerRoutes = require('./routes/register-route');
+const registerRoutes = require('./routes/register-route');
 // const indexRoutes = require('./routes/index');
 
 // // Mount all resource routes
@@ -55,9 +83,13 @@ app.use(express.static('public'));
 // // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 
 // app.use('/login', loginRoutes)
-// app.use('/register', registerRoutes);
+app.use('/register', registerRoutes);
 // app.use('/', indexRoutes);
 // Note: mount other resources here, using the same pattern above
+
+app.use('/login', loginRoutes)
+app.use('/register', registerRoutes);
+app.use('/', indexRoutes);
 
 // Home page
 // Warning: avoid creating more routes in this file!
@@ -69,10 +101,6 @@ app.get('/', (req, res) => {
 
 app.get('/login', (req, res) => {
   res.render('login');
-});
-//this is for testing it should be additions/:id
-app.get('/additions', (req, res) => {
-  res.render('additions');
 });
 
 app.get('/register', (req, res) => {
