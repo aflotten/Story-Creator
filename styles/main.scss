@@ -16,7 +16,10 @@ main{
   width:100vw;
   height: calc(100vh - 5rem);
 }
-
+a{
+  text-decoration: none;
+  color: inherit;
+}
 h1{
   margin:0
 }
@@ -39,10 +42,7 @@ header{
   color: $white;
 
 }
-#navbar a{
-  text-decoration: none;
-  color: inherit;
-}
+
 #navbar a:hover{
   color: #279AF1;
 }
@@ -64,6 +64,9 @@ header{
    display: none;
    list-style: none;
 }
+.story .title:hover{
+  color: $grey;
+ }
 #add-form{
   margin-top: 5rem;
 }
@@ -96,6 +99,7 @@ header{
 .over-counter{
   color:red;
  }
+
 .counter{
   font-family: $main-font;
   font-size: large;
