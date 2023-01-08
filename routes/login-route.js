@@ -21,9 +21,13 @@ router.post('/', (req, res) => {
       res.send({error: "error logging in user"});
       return;
     } else {
-      // something needs to change here or in nav.ejs for login to work properly, i have everything except for the name to display on the index page when you login
+      // console logged get user it was returning a promise
       req.session.userId = user.id;
-      res.render('index', {userByID: userQueries.getUserById(req.session.userId)});
+      userQueries.getUserById(req.session.userId)
+      .then(user=>{
+        res.render('index', {userByID: user});
+      })
+
     }
   })
   .catch(error => res.send(error))
