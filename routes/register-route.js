@@ -16,6 +16,9 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   const user = req.body;
   user.password = bcrypt.hashSync(user.password, 10);
+  if (user.name === null || user.email === null || user.password === null) {
+    res.send({error: "Please fill out all appropriate fields"});
+  } else {
   userQueries.addUser(user)
   .then(user => {
     if(!user) {
@@ -26,6 +29,7 @@ router.post('/', (req, res) => {
     res.send("Successfully added user!")
   })
   .catch(error => res.send(error))
+  }
 });
 
 module.exports = router;
