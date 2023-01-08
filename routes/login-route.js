@@ -15,10 +15,10 @@ router.post('/', (req, res) => {
   userQueries.getUserByEmail(email)
   .then(user => {
     if(user === undefined) {
-      res.send({error: "error logging in user"});
+      res.send({error: "User undefined"});
       return;
     } else if (bcrypt.compareSync(password, user.password) !== true) {
-      res.send({error: "error logging in user"});
+      res.send({error: "Password is incorrect, please try again."});
       return;
     } else {
       req.session.userId = user.id;
