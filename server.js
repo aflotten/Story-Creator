@@ -47,7 +47,7 @@ const indexRoutes = require('./routes/index');
 const additionsRoutes = require('./routes/additions-route');
 const creationRoutes = require('./routes/creation-route')
 const logoutRoutes = require('./routes/logout-route');
-const storiesApiRoutes = require('./routes/stories-api');
+const apiRoutes = require('./routes/api-routes');
 // // Mount all resource routes
 // // Note: Feel free to replace the example routes below with your own
 // // Note: Endpoints that return data (eg. JSON) usually start with `/api`
@@ -57,10 +57,11 @@ const storiesApiRoutes = require('./routes/stories-api');
 app.use('/login', loginRoutes);
 app.use('/register', registerRoutes);
 app.use('/', indexRoutes);
-app.use('/additions/',additionsRoutes);
+app.use('/additions',additionsRoutes);
 app.use('/creation',creationRoutes);
 app.use('/logout', logoutRoutes);
-app.use('/api/stories',storiesApiRoutes);
+app.use('/api',apiRoutes);
+
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
