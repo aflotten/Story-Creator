@@ -24,10 +24,10 @@
   <body>
     <%- include('partials/nav') %>
     <main>
-   <form id = "create-form" method="POST" action = "/additions">
+   <form id = "create-form" method="POST" action = "/creation">
 
-      <textarea placeholder="Title" name="text" id="create-title"></textarea>
-      <textarea placeholder="Write a Story" name="text" id="create-story" ></textarea>
+      <textarea placeholder="Title" name="title" id="create-title"></textarea>
+      <textarea placeholder="Write a Story" name="content" id="create-story" ></textarea>
       <button class="create-button" type="submit">Create</button>
     </form>
   </main>
