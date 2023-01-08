@@ -1,10 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const storyQueries = require('../db/queries/stories');
+const userQueries = require('../db/queries/users');
 
 router.get('/:id', (req, res) => {
   const ID =req.params.id;
-    res.render('additions', {id: ID});
+  userQueries.getUserById(req.session.userId)
+      .then(user=>{
+        res.render('additions', {userByID: user, id: ID});
+      })
+      .catch(error => res.send(error))
   })
 /** the way this displays the additions seems clunky and bad
  * it sends the param id to the ejs additions file that puts the value
