@@ -11,7 +11,7 @@ router.post('/',(req,res)=>{
   const data =req.body;
   // data.id = req.session.user_id;
   data.id = 1;
-  storyQueries.addStory(data)
+  storyQueries.insertStory(data)
     .then(result => {
       console.log(result);
       res.render('index')

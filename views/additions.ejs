@@ -21,17 +21,17 @@
     <script defer src="/scripts/mobile-button.js"></script>
     <script defer src="/scripts/counter.js"></script>
     <title>Story Creater</title>
-    <script defer src="/scripts/additions.js"></script>
-    
+    <script defer src="/scripts/display-additions.js"></script>
+
   </head>
   <body>
     <%- include('partials/nav') %>
     <input type="hidden" id="filter" value=<%= id %> />
     <main>
 
-<form id="add-form" method="POST" action="/additions" >
+<form id="add-form" method="POST" action="/additions/<%= id %>" >
 
-  <textarea placeholder="Add to story" name="text" id="add-text"></textarea>
+  <textarea placeholder="Add to story" name="addition" id="add-text"></textarea>
   <div>
     <button class="add-button" type="submit">Post Story</button>
     <output name="counter" class="counter" for="add-text">1000</output>
