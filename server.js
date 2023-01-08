@@ -57,7 +57,7 @@ const storiesApiRoutes = require('./routes/stories-api');
 app.use('/login', loginRoutes);
 app.use('/register', registerRoutes);
 app.use('/', indexRoutes);
-app.use('/additions',additionsRoutes);
+app.use('/additions/',additionsRoutes);
 app.use('/creation',creationRoutes);
 app.use('/logout', logoutRoutes);
 app.use('/api/stories',storiesApiRoutes);
