@@ -6,7 +6,7 @@ const userQueries = require('../db/queries/users');
 router.get('/:id', (req, res) => {
   const ID =req.params.id;
   userQueries.getUserById(req.session.userId)
-      .then(user=>{
+      .then(user => {
         res.render('additions', {userByID: user, id: ID});
       })
       .catch(error => res.send(error))
@@ -19,8 +19,8 @@ router.get('/:id', (req, res) => {
  */
 router.post('/:id', (req, res) => {
 
-  const data ={};
-  const ID =req.params.id;
+  const data = {};
+  const ID = req.params.id;
   //data.story_id,data.user_id,data.body,
   // data.id = req.session.user_id;
   data.user_id = 2;

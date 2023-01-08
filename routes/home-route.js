@@ -4,7 +4,7 @@ const userQueries = require('../db/queries/users');
 
 router.get('/', (req, res) => {
   userQueries.getUserById(req.session.userId)
-      .then(user=>{
+      .then(user => {
         res.render('index', {userByID: user});
       })
       .catch(error => res.send(error))

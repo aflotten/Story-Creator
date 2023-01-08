@@ -6,7 +6,7 @@ const userQueries = require('../db/queries/users');
 // Get method for displaying login
 router.get('/', (req, res) => {
   userQueries.getUserById(req.session.userId)
-      .then(user=>{
+      .then(user => {
         res.render('login', {userByID: user});
       })
       .catch(error => res.send(error))
@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
     } else {
       req.session.userId = user.id;
       userQueries.getUserById(req.session.userId)
-      .then(user=>{
+      .then(user => {
         res.render('index', {userByID: user});
       })
 
