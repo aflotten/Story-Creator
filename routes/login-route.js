@@ -5,7 +5,11 @@ const userQueries = require('../db/queries/users');
 
 // Get method for displaying login
 router.get('/', (req, res) => {
-  res.render('login')
+  userQueries.getUserById(req.session.userId)
+      .then(user=>{
+        res.render('login', {userByID: user});
+      })
+      .catch(error => res.send(error))
 });
 
 // Post method for sending loggin credentials
@@ -21,7 +25,6 @@ router.post('/', (req, res) => {
       res.send({error: "error logging in user"});
       return;
     } else {
-      // console logged get user it was returning a promise
       req.session.userId = user.id;
       userQueries.getUserById(req.session.userId)
       .then(user=>{
