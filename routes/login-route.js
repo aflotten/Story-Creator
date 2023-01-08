@@ -21,8 +21,9 @@ router.post('/', (req, res) => {
       res.send({error: "Password is incorrect, please try again."});
       return;
     } else {
+      // something needs to change here or in nav.ejs for login to work properly, i have everything except for the name to display on the index page when you login
       req.session.userId = user.id;
-      res.send("Successfully logged in user!");
+      res.render('index', {userByID: userQueries.getUserById(req.session.userId)});
     }
   })
   .catch(error => res.send(error))
