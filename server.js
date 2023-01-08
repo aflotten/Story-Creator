@@ -43,7 +43,7 @@ app.use(express.static('public'));
 
 const loginRoutes = require('./routes/login-route');
 const registerRoutes = require('./routes/register-route');
-const indexRoutes = require('./routes/index');
+const homeRoutes = require('./routes/home-route');
 const additionsRoutes = require('./routes/additions-route');
 const creationRoutes = require('./routes/creation-route')
 const logoutRoutes = require('./routes/logout-route');
@@ -56,7 +56,7 @@ const apiRoutes = require('./routes/api-routes');
 
 app.use('/login', loginRoutes);
 app.use('/register', registerRoutes);
-app.use('/', indexRoutes);
+app.use('/', homeRoutes);
 app.use('/additions',additionsRoutes);
 app.use('/creation',creationRoutes);
 app.use('/logout', logoutRoutes);
