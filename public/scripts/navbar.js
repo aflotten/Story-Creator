@@ -10,11 +10,10 @@ $(document).ready(function() {
     if (prevScrollpos > currentScrollPos) {
       $nav.css({'top':'0'});
       $top.css({'display':'none'})
-      console.log(window.pageYOffset);
     } else {
       $nav.css({'top':'-5rem'});
       $top.css({'display':'block'})
-    // console.log(window.pageYOffset);
+    
     }
     prevScrollpos = currentScrollPos;
 };

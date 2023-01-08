@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  const id  = document.getElementById("filter").value;
+  const id  = document.getElementById("filter").content;
   console.log(id);
     const renderAdditions = function(additions) {
       additions.forEach(addition => {

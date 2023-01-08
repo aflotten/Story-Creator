@@ -30,7 +30,7 @@ router.post('/:id', (req, res) => {
   storyQueries.insertAddition(data)
     .then(result => {
       console.log(result);
-      res.render('additions',{id: ID})
+      res.redirect(`${ID}`);
     })
     .catch(err => {
       res

@@ -18,17 +18,17 @@
 
     <script src="https://kit.fontawesome.com/64e7347985.js" crossorigin="anonymous"></script>
     <script src="/vendor/jquery-3.0.0.js"></script>
-    <script defer src="/scripts/mobile-button.js"></script>
-    <script defer src="/scripts/counter.js"></script>
+
+
     <title>Story Creater</title>
+    <meta id="filter" content=<%= id %>>
     <script defer src="/scripts/display-additions.js"></script>
-    <script defer src="/scripts/navbar.js"></script>
-    
+
+
 
   </head>
   <body>
     <%- include('partials/nav') %>
-    <input type="hidden" id="filter" value=<%= id %> />
     <main>
 
 <form id="add-form" method="POST" action="/additions/<%= id %>" >
@@ -44,4 +44,7 @@
 </section>
 </main>
   </body>
+  <script defer src="/scripts/counter.js"></script>
+  <script defer src="/scripts/mobile-button.js"></script>
+  <script defer src="/scripts/navbar.js"></script>
 </html>
