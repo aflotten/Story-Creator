@@ -5,11 +5,15 @@ const userQueries = require('../db/queries/users');
 
 // Get method for displaying login
 router.get('/', (req, res) => {
+  if (req.session.userId) {
+    res.redirect('/')
+  } else {
   userQueries.getUserById(req.session.userId)
       .then(user => {
         res.render('login', {userByID: user});
       })
       .catch(error => res.send(error))
+  }
 });
 
 // Post method for sending loggin credentials
@@ -19,10 +23,10 @@ router.post('/', (req, res) => {
   userQueries.getUserByEmail(email)
   .then(user => {
     if(user === undefined) {
-      res.send({error: "error logging in user"});
+      res.send({error: "User undefined"});
       return;
     } else if (bcrypt.compareSync(password, user.password) !== true) {
-      res.send({error: "error logging in user"});
+      res.send({error: "Password is incorrect, please try again."});
       return;
     } else {
       req.session.userId = user.id;
