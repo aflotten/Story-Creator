@@ -5,7 +5,11 @@ const userQueries = require('../db/queries/users');
 
 // Get method for rendering registration page
 router.get('/', (req, res) => {
-  res.render('register');
+  userQueries.getUserById(req.session.userId)
+      .then(user => {
+        res.render('register', {userByID: user});
+      })
+      .catch(error => res.send(error))
 });
 
 // Post method for pushing user to DB

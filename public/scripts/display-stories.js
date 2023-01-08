@@ -15,7 +15,7 @@ $(document).ready(function() {
   const createStoryElement = function(storyData) {
     let  $story = $(`
     <article class = 'story'>
-    <a href = '/additions/:${storyData.id}'>
+    <a href = '/additions/${storyData.id}'>
     <h1 class="title">${storyData.title}</h1>
     </a>
     <h3 class = "date">${storyData.date}</h3>

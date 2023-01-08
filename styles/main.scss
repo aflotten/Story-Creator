@@ -12,7 +12,7 @@ main{
   color :$black;
   background-color: $white;
   margin: 0;
-  padding:3rem 3rem;
+  padding:6rem 3rem 3rem 3rem;
   width:100vw;
   height: calc(100vh - 5rem);
 }
@@ -29,8 +29,12 @@ h1{
 header{
   background-color:$grey;
   padding: 0 2rem;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  transition: top 0.3s;
 }
-#navbar{
+nav{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -42,8 +46,17 @@ header{
   color: $white;
 
 }
+#top{
+  position :fixed;
+  opacity: 50%;
+  bottom: 10%;
+  right: 10%;
+  color: $black;
+  display: none;
+  font-size: 2rem;
+}
 
-#navbar a:hover{
+nav a:hover{
   color: #279AF1;
 }
 #right-menu{
@@ -54,7 +67,7 @@ header{
 #right-menu > *:not(:last-child){
   margin-right: 2rem;
 }
-#navbar i{
+nav i{
   margin-right: 1rem;
 }
 .toggle-button{
@@ -63,6 +76,7 @@ header{
 .mobile-menu{
    display: none;
    list-style: none;
+   z-index:10;
 }
 .story .title:hover{
   color: $grey;

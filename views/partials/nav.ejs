@@ -1,5 +1,5 @@
-<header>
-  <nav id="navbar">
+<header id="navbar">
+  <nav >
     <a id = "left-menu" href="/creation"><i class="fa-regular fa-pen-to-square"></i>
       Create a story</a>
     <a class = 'toggle-button'><i class="fa-solid fa-bars"></i></a>
@@ -14,7 +14,6 @@
     </div>
     <a class="logo" href="/">
     <i class="fa-solid fa-book-open-reader"></i></a>
-      <!-- something needs to change here as well if it didnt work in login-route.js -->
     <% if(typeof userByID !== 'undefined'){ %>
       <h5>Logged in as: <%= userByID.name %>! </h5>
       <form class="form-inline" action="/logout" method="POST">
@@ -22,7 +21,7 @@
           <button type="submit" class="btn btn-primary">Logout</button>
         </div>
       </form>
-    <% console.log(userByID)} else{ %>
+    <% } else{ %>
       <div id ='right-menu'>
         <div>
           <a href="/register">
@@ -30,6 +29,7 @@
           <a href="/login"><div><i class="fa-solid fa-key"></i>Login</div></a>
       </div>
    <% } %>
+   <i  id ='top'class="fa-solid fa-circle-arrow-up"></i>
   </nav>
 
 </header>
