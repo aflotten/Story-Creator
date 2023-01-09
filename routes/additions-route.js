@@ -5,7 +5,7 @@ const userQueries = require('../db/queries/users');
 const { getLikes, addLike } = require('../db/queries/likes');
 
 router.get('/:id', (req, res) => {
-  const ID =req.params.id;
+  const ID = req.params.id;
   userQueries.getUserById(req.session.userId)
       .then(user => {
         res.render('additions', {userByID: user, id: ID});
@@ -22,9 +22,7 @@ router.post('/:id', (req, res) => {
 
   const data = {};
   const ID = req.params.id;
-  //data.story_id,data.user_id,data.body,
-  // data.id = req.session.user_id;
-  data.user_id = 2;
+  data.user_id = req.session.userId
   data.story_id = ID;
   data.body = req.body.addition;
   console.log(data)
