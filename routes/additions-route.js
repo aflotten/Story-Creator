@@ -25,8 +25,10 @@ router.post('/:id', (req, res) => {
   data.user_id = req.session.userId
   data.story_id = ID;
   data.body = req.body.addition;
-  console.log(data)
-  storyQueries.insertAddition(data)
+  if (data.body === '') {
+    res.send({error: "Input is blank, please try again."});
+  } else {
+    storyQueries.insertAddition(data)
     .then(result => {
       console.log(result);
       res.redirect(`${ID}`);
@@ -35,6 +37,7 @@ router.post('/:id', (req, res) => {
       res
         .status(500)
     });
+  }
 })
 
 router.get('/likes/:id', async (req, res) => {
