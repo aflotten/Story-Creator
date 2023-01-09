@@ -5,14 +5,20 @@ const storyQueries = require('../db/queries/stories');
 const userQueries = require('../db/queries/users');
 
 router.get('/', (req, res) => {
+  if (req.session.userId) {
   userQueries.getUserById(req.session.userId)
       .then(user => {
         res.render('creation', {userByID: user});
       })
       .catch(error => res.send(error))
+    }
+  else{
+    res.redirect('/');
+  }
 });
 
 router.post('/', (req, res)=> {
+  if (req.session.userId) {
   userQueries.getUserById(req.session.userId)
       .then(user => {
         const data = req.body
@@ -27,6 +33,10 @@ router.post('/', (req, res)=> {
               .status(500)
           });
             })
+          }
+  else{
+    res.redirect('/');
+  }
 })
 
 module.exports = router;
