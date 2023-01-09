@@ -12,12 +12,7 @@ router.get('/:id', (req, res) => {
       })
       .catch(error => res.send(error))
   })
-/** the way this displays the additions seems clunky and bad
- * it sends the param id to the ejs additions file that puts the value
- * in the hidden input for the j query file display-additions to read
- * then the normal steps
- * try it and see what I mean
- */
+
 router.post('/:id', (req, res) => {
 
   const data = {};

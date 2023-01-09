@@ -22,7 +22,7 @@
 
     <title>Story Creater</title>
     <meta id="filter" content=<%= id %>>
-    <script defer src="/scripts/display-additions.js"></script>
+
 
 
 
@@ -48,21 +48,5 @@
   <script defer src="/scripts/counter.js"></script>
   <script defer src="/scripts/mobile-button.js"></script>
   <script defer src="/scripts/navbar.js"></script>
-  <script>
-    const button=document.querySelector(".like-button")
-    button.addEventListener("click", (e) => {
-      console.log("ABC");
-      $.ajax({
-        method: "GET",
-        url: "http://localhost:8080/additions/likes/1",
-        //dataType: JSON,
-        success: function(data) {
-          const {count} = data;
-          console.log(e);
-          $(".like-button").text(Number(count) + 1);
-          console.log("DATA IS HERE:", data);
-        }
-      })
-    })
-  </script>
+  <script defer src="/scripts/display-additions.js"></script>
 </html>
