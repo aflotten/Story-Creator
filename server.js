@@ -57,10 +57,11 @@ const apiRoutes = require('./routes/api-routes');
 app.use('/login', loginRoutes);
 app.use('/register', registerRoutes);
 app.use('/', homeRoutes);
-app.use('/additions/',additionsRoutes);
+app.use('/additions',additionsRoutes);
 app.use('/creation',creationRoutes);
 app.use('/logout', logoutRoutes);
-// app.use('/api/stories', storiesApiRoutes);
+app.use('/api',apiRoutes);
+
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).

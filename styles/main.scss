@@ -78,6 +78,9 @@ nav i{
    list-style: none;
    z-index:10;
 }
+::placeholder{
+  opacity: attr();
+}
 .story .title:hover{
   color: $grey;
  }
@@ -146,6 +149,9 @@ textarea {
 }
 .create-button:hover{
   background-color: $tuscany-dark;
+}
+::-webkit-input-placeholder{
+  opacity: 0;
 }
 @media only screen and (max-width: 1024px)  {
 
