@@ -38,7 +38,7 @@ const getAdditions = (id) => {
    from stories then the user_id will be based off the story
    but with addition its based off additions*/
   return db.query(
-    `SELECT name ,body FROM additions
+    `SELECT additions.id as id,name ,body FROM additions
     JOIN users ON users.id = user_id
     JOIN stories ON stories.id = story_id
     WHERE stories.id = $1;

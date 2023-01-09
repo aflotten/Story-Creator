@@ -101,6 +101,7 @@ nav i{
   background-color: $white;
   font-family: $sub-font;
 }
+
 .add-button{
   font-family: $main-font;
   color :$black;
@@ -112,6 +113,18 @@ nav i{
 }
 .add-button:hover{
   background-color: $tuscany-dark;
+}
+.likes-button{
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+.likes-button i:hover{
+  color: $blue;
 }
 .over-counter{
   color:red;

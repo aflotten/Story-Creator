@@ -15,6 +15,7 @@ $(document).ready(function() {
       <h3 class = "date">${storyData.date}</h3>
       <h2 class="username">${storyData.name}</h2>
     <p class ="content">${storyData.content}</p>
+
   </article>`);
       return $story;
     };
@@ -23,6 +24,11 @@ $(document).ready(function() {
       <article class = 'addition-story'>
     <p class="username">${additionData.name}</p>
     <p>${additionData.body}</p>
+    <form method="POST" action="/likes/${additionData.id}" >
+    <button class = "likes-button" type="submit">
+    <i class="fa-regular fa-heart"></i>
+    </button>
+    </form>
   </article>`);
       return $addition;
     };
