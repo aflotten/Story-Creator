@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
   } else {
     userQueries.getUserById(req.session.userId)
       .then(user => {
-        res.render('login', {userByID: user});
+        res.render('register', {userByID: user});
       })
       .catch(error => res.send(error))
   }
