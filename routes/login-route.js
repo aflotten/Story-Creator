@@ -23,7 +23,7 @@ router.post('/', (req, res) => {
   userQueries.getUserByEmail(email)
   .then(user => {
     if(user === undefined) {
-      res.send({error: "User undefined"});
+      res.send({error: "User not in database, please register"});
       return;
     } else if (bcrypt.compareSync(password, user.password) !== true) {
       res.send({error: "Password is incorrect, please try again."});

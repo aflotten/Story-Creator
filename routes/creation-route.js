@@ -23,7 +23,10 @@ router.post('/', (req, res)=> {
       .then(user => {
         const data = req.body
         data.id = user.id
-        storyQueries.insertStory(data)
+        if (!data.title || !data.content) {
+          res.send({ error: "Please fill out all appropriate fields" });
+        } else {
+          storyQueries.insertStory(data)
           .then(result => {
             console.log(result);
             res.render('index', {userByID: user})
@@ -32,6 +35,7 @@ router.post('/', (req, res)=> {
             res
               .status(500)
           });
+        }
             })
           }
   else{
