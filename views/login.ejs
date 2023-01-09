@@ -30,19 +30,22 @@
 <body>
   <%- include('partials/nav') %>
   <main>
-  <h1>Login! 🥔</h1>
+
 
 <form class="form-inline" action="/login" method="POST">
-  <div class="form-group mb-2">
-      <label for="longURL">Email:</label>
+  <div class="form-group mb-2" id="account">
+    <h1>Login! 🥔</h1>
+    <div>
+      <label for="longURL">Email</label>
           <input
               class="form-control"
               type="email"
               name="email"
               placeholder="example@gmail.com"
               style="width: 300px; margin: 1em"
-          />
-      <label for="longURL">Password:</label>
+          /></div>
+          <div>
+      <label for="longURL">Password</label>
           <input
               class="form-control"
               type="password"
@@ -50,9 +53,11 @@
               placeholder="YourPassword1!"
               style="width: 300px; margin: 1em"
           />
+        </div>
     <button type="submit" class="btn btn-primary">Login</button>
   </div>
 </form>
+
 </main>
 </body>
 </html>
