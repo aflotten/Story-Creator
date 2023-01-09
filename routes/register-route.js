@@ -22,23 +22,27 @@ router.post('/', (req, res) => {
   user.password = bcrypt.hashSync(user.password, 10);
   if (!user.name || !user.email || !user.password) {
     res.send({ error: "Please fill out all appropriate fields" });
-  } else if (userQueries.getUserByEmail(user)) {
-    res.send({ error: "User email already exists in database. Please login" })
-  } else {
-    userQueries.addUser(user)
-      .then(user => {
-        if (!user) {
-          res.send({ error: "error adding user" })
-          return;
-        }
-        req.session.userId = user.id;
-        userQueries.getUserById(req.session.userId)
-          .then(user => {
-            res.render('index', { userByID: user });
-          })
-      })
-      .catch(error => res.send(error))
-  }
+  } else if (userQueries.getUserByEmail(user.email)
+              .then(user => {
+                if (user) {
+                  res.send({ error: "User email already exists in database. Please login" })
+                } else {
+                  const user = req.body
+                  userQueries.addUser(user)
+                    .then(user => {
+                      if (!user) {
+                        res.send({ error: "error adding user" })
+                        return;
+                        }
+                        req.session.userId = user.id;
+                        userQueries.getUserById(req.session.userId)
+                          .then(user => {
+                            res.render('index', { userByID: user });
+                              })
+                            })
+                              .catch(error => res.send(error))
+                };
+            }));
 });
 
 module.exports = router;
