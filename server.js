@@ -9,6 +9,7 @@ const cookieSession = require("cookie-session");
 
 const PORT = process.env.PORT || 8080;
 const app = express();
+app.use(express.json({}));
 
 app.set('view engine', 'ejs');
 

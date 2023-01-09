@@ -9,3 +9,5 @@ const getLikes = (addition_id) => {
   const queryString = `SELECT COUNT(*) FROM likes WHERE addition_id = $1;`
   return db.query(queryString, [addition_id])
 };
+
+module.exports = { addLike, getLikes };
