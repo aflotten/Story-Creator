@@ -29,10 +29,10 @@ $(document).ready(function() {
     <p class="username">${additionData.name}</p>
     <p>${additionData.body}</p>
     <div class = 'like-div'>
-    <button class="likes-button" type="submit" value = ${additionData.id} >
+    <button class="like-button" type="submit" value = ${additionData.id} >
     <i class="fa-regular fa-heart"></i>
     </button>
-    <p class="like-count">1</p>
+    <button class="like-count" value =${additionData.id}>1</button>
     </div>
   </article>`);
       return $addition;
@@ -70,18 +70,27 @@ $(document).ready(function() {
   // // const button_val=document.querySelector(".likes-button").val;
   // const article = $('.like-story')
   // const butt = $('.likes-button')
-  $('#additions-container').on('click','.likes-button',function(e){
-    const button=document.querySelector(".likes-button");
-    const thisId = button.value;
+  $('#additions-container').on('click','.like-button',function(e){
+
+    const thisId=e.currentTarget.value;
+
     $.ajax({
       method: "GET",
       url: `http://localhost:8080/additions/likes/${thisId}`,
       //dataType: JSON,
       success: function(data) {
         const {count} = data;
-        console.log(Number(count) + 1);
-        $(".like-count").text(Number(count) + 1);
-        console.log("DATA IS HERE:", data);
+        const elements = document.querySelectorAll(".like-count");
+            for (i of elements) {
+
+              if(i.value === thisId){
+                // console.log(i);
+                i.innerHTML = 2;
+              }
+        }
+        // console.log(Number(count) + 1);
+        // $(".like-count").text(Number(count) + 1);
+        // console.log("DATA IS HERE:", data);
       }
     })
   })
@@ -90,8 +99,8 @@ $(document).ready(function() {
   //   console.log('hee')
   // })
 
-  button.addEventListener('click', function(e) {
-    console.log("ABC");
+  // button.addEventListener('click', function(e) {
+  //   console.log("ABC");
 
-  })
+  // })
 });

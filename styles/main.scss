@@ -166,7 +166,10 @@ textarea {
 ::-webkit-input-placeholder{
   opacity: 0;
 }
-
+.like-div{
+  display: flex;
+  flex-direction: row;
+}
 #account{
   font-family: $main-font;
   display: flex;
