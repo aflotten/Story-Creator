@@ -114,7 +114,7 @@ nav i{
 .add-button:hover{
   background-color: $tuscany-dark;
 }
-.likes-button{
+.like-button{
   background: none;
 	color: inherit;
 	border: none;
@@ -123,8 +123,20 @@ nav i{
 	cursor: pointer;
 	outline: inherit;
 }
-.likes-button i:hover{
+.like-button i:hover{
   color: $blue;
+}
+.like-count{
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  font-family: $sub-font;
+  font-weight: 200;
+  margin-left: 1em
 }
 .over-counter{
   color:red;
@@ -215,6 +227,19 @@ textarea {
   flex-direction: column;
   align-items: center;
 }
+.error>i{
+  margin:0px 10px;
+ }
+ .error{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width:100%;
+  color: red;
+  border: 2px solid red;
+ }
 @media only screen and (max-width: 1024px)  {
   #account{
     background-color: $white;

@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   const count =0;
-  const id  = document.getElementById("filter").content;
+  const id  = document.getElementById("add-id").content;
     const renderAdditions = function(additions) {
       additions.forEach(addition => {
         let $addition = createAdditionElement(addition)
@@ -94,13 +94,4 @@ $(document).ready(function() {
       }
     })
   })
-
-  // button.addEventListener('click', function(e) {
-  //   console.log('hee')
-  // })
-
-  // button.addEventListener('click', function(e) {
-  //   console.log("ABC");
-
-  // })
 });
