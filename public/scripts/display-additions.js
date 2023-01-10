@@ -1,10 +1,14 @@
 $(document).ready(function() {
+
+  const count =0;
   const id  = document.getElementById("filter").content;
-  console.log(id);
     const renderAdditions = function(additions) {
       additions.forEach(addition => {
-        let $addition = createAdditionElement(addition);
-        $('#additions-container').prepend($addition);
+        let $addition = createAdditionElement(addition)
+
+
+        $('#additions-container').prepend($addition)
+
       });
     };
 
@@ -24,11 +28,12 @@ $(document).ready(function() {
       <article class = 'addition-story'>
     <p class="username">${additionData.name}</p>
     <p>${additionData.body}</p>
-    <form method="POST" action="/likes/${additionData.id}" >
-    <button class = "likes-button" type="submit">
+    <div class = 'like-div'>
+    <button class="like-button" type="submit" value = ${additionData.id} >
     <i class="fa-regular fa-heart"></i>
     </button>
-    </form>
+    <button class="like-count" value =${additionData.id}>1</button>
+    </div>
   </article>`);
       return $addition;
     };
@@ -52,8 +57,50 @@ $(document).ready(function() {
     .done((response) => {
       let $story = createStoryElement(response[0]);
         $('main').prepend($story);
+        loadAddition();
     })
   }
-  loadAddition();
+
+
+
+
+
   loadStory();
+
+  // // const button_val=document.querySelector(".likes-button").val;
+  // const article = $('.like-story')
+  // const butt = $('.likes-button')
+  $('#additions-container').on('click','.like-button',function(e){
+
+    const thisId=e.currentTarget.value;
+
+    $.ajax({
+      method: "GET",
+      url: `http://localhost:8080/additions/likes/${thisId}`,
+      //dataType: JSON,
+      success: function(data) {
+        const {count} = data;
+        const elements = document.querySelectorAll(".like-count");
+            for (i of elements) {
+
+              if(i.value === thisId){
+                // console.log(i);
+                i.innerHTML = 2;
+              }
+        }
+        // console.log(Number(count) + 1);
+        // $(".like-count").text(Number(count) + 1);
+        // console.log("DATA IS HERE:", data);
+      }
+    })
+  })
+
+  // button.addEventListener('click', function(e) {
+  //   console.log('hee')
+  // })
+
+  // button.addEventListener('click', function(e) {
+  //   console.log("ABC");
+
+  // })
 });

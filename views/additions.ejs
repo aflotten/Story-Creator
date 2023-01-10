@@ -22,7 +22,7 @@
 
     <title>Story Creater</title>
     <meta id="filter" content=<%= id %>>
-    <script defer src="/scripts/display-additions.js"></script>
+
 
 
 
@@ -39,7 +39,6 @@
     <output name="counter" class="counter" for="add-text">1000</output>
   </div>
 </form>
-<button class="like-button">1</button>
 <section id="additions-container">
 
 </section>
@@ -53,8 +52,8 @@
     button.addEventListener("click", (e) => {
       console.log("ABC");
       $.ajax({
-        method: "POST",
-        url: "http://localhost:8080/additions/likes/<%= id %>",
+        method: "GET",
+        url: "http://localhost:8080/additions/likes/1",
         //dataType: JSON,
         success: function(data) {
           const {count} = data;
