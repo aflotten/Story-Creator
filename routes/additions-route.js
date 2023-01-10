@@ -40,19 +40,14 @@ router.post('/:id', (req, res) => {
   }
 })
 
-router.get('/likes/:id', async (req, res) => {
-  console.log("WE made it here");
+router.post('/likes/:id', async (req, res) => {
   const ID = req.params.id;
-  console.log("ID IS HERE:",ID);
-  await getLikes(ID)
-  .then(resp => {
-    console.log("RESP:", resp.rows[0]);
-    const numOfLikes = resp.rows[0]
-    const {count} = resp.rows[0];
-    console.log("HERE IS THE COUNT:", count)
-    return res.status(200).json({count});
-  })
-  .catch(err => (console.log(err)));
+  console.log(req.session)
+  const count = await getLikes(ID);
+  addLike(ID, req.session.userId)
+  .then(({response}) => {
+      res.json(count.rows[0])
+    })
+    .catch(error => console.log("Error with in like query", error))
 })
-
 module.exports = router;

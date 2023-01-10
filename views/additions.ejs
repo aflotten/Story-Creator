@@ -53,8 +53,8 @@
     button.addEventListener("click", (e) => {
       console.log("ABC");
       $.ajax({
-        method: "GET",
-        url: "http://localhost:8080/additions/likes/1",
+        method: "POST",
+        url: "http://localhost:8080/additions/likes/<%= id %>",
         //dataType: JSON,
         success: function(data) {
           const {count} = data;
