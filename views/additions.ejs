@@ -21,7 +21,8 @@
 
 
     <title>Story Creater</title>
-    <meta id="filter" content=<%= id %>>
+    <meta id="add-id" content=<%= id %>>
+    <meta id="user-id" content=<%= userByID %>>
 
 
 
@@ -45,14 +46,41 @@
     <button class="add-button" type="submit">Post Story</button>
     <output name="counter" class="counter" for="add-text">1000</output>
   </div>
+  <div class="error">
+
+    <p></p>
+
+  </div>
 </form>
 <section id="additions-container">
 
 </section>
+<div id ='like-error'>
+    <p></p>
+</div>
 </main>
   </body>
   <script defer src="/scripts/counter.js"></script>
   <script defer src="/scripts/mobile-button.js"></script>
   <script defer src="/scripts/navbar.js"></script>
   <script defer src="/scripts/display-additions.js"></script>
+  <script defer src="/scripts/addition-form-submit.js"></script>
+
+  <!-- <script>
+    const button=document.querySelector(".like-button")
+    button.addEventListener("click", (e) => {
+      console.log("ABC");
+      $.ajax({
+        method: "GET",
+        url: "http://localhost:8080/additions/likes/1",
+        //dataType: JSON,
+        success: function(data) {
+          const {count} = data;
+          console.log(e);
+          $(".like-button").text(Number(count) + 1);
+          console.log("DATA IS HERE:", data);
+        }
+      })
+    })
+  </script> -->
 </html>

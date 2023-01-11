@@ -8,11 +8,11 @@ router.get('/', (req, res) => {
   if (req.session.userId) {
     res.redirect('/')
   } else {
-    userQueries.getUserById(req.session.userId)
-      .then(user => {
-        res.render('register', {userByID: user});
-      })
-      .catch(error => res.send(error))
+    // userQueries.getUserById(req.session.userId)
+    //   .then(user => {
+        res.render('register', {});
+      // })
+      // .catch(error => res.send(error))
   }
 });
 
@@ -21,17 +21,20 @@ router.post('/', (req, res) => {
   const user = req.body;
   user.password = bcrypt.hashSync(user.password, 10);
   if (!user.name || !user.email || !user.password) {
-    res.send({ error: "Please fill out all appropriate fields" });
-  } else if (userQueries.getUserByEmail(user.email)
+    res.render('register', {error: "Please fill out all appropriate fields" });
+  }
+  else if (userQueries.getUserByEmail(user.email)
               .then(user => {
                 if (user) {
-                  res.send({ error: "User email already exists in database. Please login" })
-                } else {
+                  res.render('register', { error: "User email already exists in database. Please login"});
+                  return;
+                }
+                else {
                   const user = req.body
                   userQueries.addUser(user)
                     .then(user => {
                       if (!user) {
-                        res.send({ error: "error adding user" })
+                        res.render('register', {error: "error adding user"});
                         return;
                         }
                         req.session.userId = user.id;

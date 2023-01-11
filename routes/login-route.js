@@ -8,11 +8,11 @@ router.get('/', (req, res) => {
   if (req.session.userId) {
     res.redirect('/')
   } else {
-  userQueries.getUserById(req.session.userId)
-      .then(user => {
-        res.render('login', {userByID: user});
-      })
-      .catch(error => res.send(error))
+  // userQueries.getUserById(req.session.userId)
+  //     .then(user => {
+        res.render('login', {});
+      // })
+      // .catch(error => res.send(error))
   }
 });
 
@@ -23,10 +23,10 @@ router.post('/', (req, res) => {
   userQueries.getUserByEmail(email)
   .then(user => {
     if(user === undefined) {
-      res.send({error: "User not in database, please register"});
+      res.render('login', {error:'User not in database, please register'})
       return;
     } else if (bcrypt.compareSync(password, user.password) !== true) {
-      res.send({error: "Password is incorrect, please try again."});
+      res.render('login', {error:"Password is incorrect, please try again."})
       return;
     } else {
       req.session.userId = user.id;

@@ -5,6 +5,7 @@ $tuscany-dark:#886963;
 $blue : #279AF1;
 $grey : #60656F;
 $black : #131112;
+$red : #d40f0f;
 $sub-font: 'Open Sans', sans-serif;
 $main-font: 'Playfair Display', serif;
 
@@ -114,7 +115,7 @@ nav i{
 .add-button:hover{
   background-color: $tuscany-dark;
 }
-.likes-button{
+.like-button{
   background: none;
 	color: inherit;
 	border: none;
@@ -123,11 +124,23 @@ nav i{
 	cursor: pointer;
 	outline: inherit;
 }
-.likes-button i:hover{
+.like-button i:hover{
   color: $blue;
 }
+.like-count{
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  font-family: $sub-font;
+  font-weight: 200;
+  margin-left: 1em
+}
 .over-counter{
-  color:red;
+  color:$red;
  }
 
 .counter{
@@ -166,7 +179,10 @@ textarea {
 ::-webkit-input-placeholder{
   opacity: 0;
 }
-
+.like-div{
+  display: flex;
+  flex-direction: row;
+}
 #account{
   font-family: $main-font;
   display: flex;
@@ -177,7 +193,7 @@ textarea {
   margin-left: auto;
   margin-right: auto;
   margin-top: 5%;
-  border-radius: 2em;
+  border-radius: 1em;
 }
 #account button{
   margin-bottom: 5em;
@@ -200,7 +216,7 @@ textarea {
 #account input{
   border: none;
   outline: none;
-  border-radius: 5em;
+  border-radius: 0.5em;
   height:2em
 }
 #account label{
@@ -212,6 +228,37 @@ textarea {
   flex-direction: column;
   align-items: center;
 }
+.error>i{
+  margin:0px 10px;
+ }
+ .error{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width:100%;
+  color:$red;
+  // border: 2px solid $black;
+ }
+ #like-error>i{
+  margin:0px 10px;
+ }
+ #like-error{
+  position: fixed;
+  bottom: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  background-color: $white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width:50%;
+  color:$red;
+  // border: 2px solid $black;
+ }
 @media only screen and (max-width: 1024px)  {
   #account{
     background-color: $white;

@@ -19,7 +19,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Playfair+Display:wght@400;900&display=swap" rel="stylesheet">
-
     <script src="https://kit.fontawesome.com/64e7347985.js" crossorigin="anonymous"></script>
     <script src="/vendor/jquery-3.0.0.js"></script>
     <script defer src="/scripts/mobile-button.js"></script>
@@ -54,6 +53,13 @@
               style="width: 300px; margin: 1em"
           />
         </div>
+        <% if(typeof error !== 'undefined'){ %>
+        <div class="error">
+          <p>
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <%= error %></p>
+        </div>
+        <% } %>
     <button type="submit" class="btn btn-primary">Login</button>
   </div>
 </form>
