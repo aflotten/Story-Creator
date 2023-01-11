@@ -3,7 +3,7 @@ $(document).ready(function() {
   const id  = document.getElementById("add-id").content;
   const userByID  = document.getElementById("user-id").content;
   $('#like-error').hide();
-  
+
     const renderAdditions = function(additions) {
       additions.forEach(addition => {
         let $addition = createAdditionElement(addition)
@@ -67,11 +67,8 @@ $(document).ready(function() {
 
   loadStory();
 
-  // // const button_val=document.querySelector(".likes-button").val;
-  // const article = $('.like-story')
-  // const butt = $('.likes-button')
-  $('#additions-container').on('click','.like-button',function(e){
 
+  $('#additions-container').on('click','.like-button',function(e){
 
     const thisId=e.currentTarget.value;
     if (userByID === '') {
@@ -86,21 +83,17 @@ $(document).ready(function() {
     $.ajax({
       method: "POST",
       url: `http://localhost:8080/additions/likes/${thisId}`,
-      //dataType: JSON,
       success: function(data) {
+        console.log("==========", data);
         const {count} = data;
         console.log(count);
         const elements = document.querySelectorAll(".like-count");
             for (i of elements) {
 
               if(i.value === thisId){
-                // console.log(i);
-                i.innerHTML = Number(count) + 1;
+                i.innerHTML = Number(count);
               }
         }
-        // console.log(Number(count) + 1);
-        // $(".like-count").text(Number(count) + 1);
-        // console.log("DATA IS HERE:", data);
       }
     })
   })
