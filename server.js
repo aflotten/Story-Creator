@@ -49,6 +49,7 @@ const additionsRoutes = require('./routes/additions-route');
 const creationRoutes = require('./routes/creation-route')
 const logoutRoutes = require('./routes/logout-route');
 const apiRoutes = require('./routes/api-routes');
+const myStoriesRoutes =require('./routes/mystories-route');
 // // Mount all resource routes
 // // Note: Feel free to replace the example routes below with your own
 // // Note: Endpoints that return data (eg. JSON) usually start with `/api`
@@ -62,6 +63,7 @@ app.use('/additions', additionsRoutes);
 app.use('/creation', creationRoutes);
 app.use('/logout', logoutRoutes);
 app.use('/api', apiRoutes);
+app.use('/mystories',myStoriesRoutes);
 
 // Home page
 // Warning: avoid creating more routes in this file!

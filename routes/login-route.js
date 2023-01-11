@@ -20,6 +20,10 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
+  if (!email || !password) {
+    res.render('login', {error: "Please fill out all appropriate fields" });
+    return;
+  }
   userQueries.getUserByEmail(email)
   .then(user => {
     if(user === undefined) {

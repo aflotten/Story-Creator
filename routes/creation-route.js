@@ -24,7 +24,7 @@ router.post('/', (req, res)=> {
         const data = req.body
         data.id = user.id
         if (!data.title || !data.content) {
-          res.send({ error: "Please fill out all appropriate fields" });
+          res.render('creation', {userByID: user,error: "Please fill out all appropriate fields" });
         } else {
           storyQueries.insertStory(data)
           .then(result => {

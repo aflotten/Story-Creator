@@ -5,22 +5,39 @@
     <a class = 'toggle-button'><i class="fa-solid fa-bars"></i></a>
 
       <ul class="mobile-menu">
+        <% if(typeof userByID !== 'undefined'){ %>
+          <li><h2> <%= userByID.name %> </h2></li>
+          <li><a href="/mystories">
+            <i class="fa-solid fa-book"></i>My Stories</a></li>
+            <li><a href="/creation"><i class="fa-regular fa-pen-to-square"></i>
+              Create a story</a></li>
+          <li><form class="form-inline" action="/logout" method="POST">
+            <div class="form-group mb-2">
+              <button type="submit" id="logout-button" class="btn btn-primary"><i class="fa-solid fa-arrow-right-from-bracket"></i>logout</button></li>
+          <% } else{ %>
         <li><a href="/register">
           <i class="fa-sharp fa-solid fa-right-to-bracket"></i>Sign Up </a></li>
+
        <li><a href="/login"><div><i class="fa-solid fa-key"></i>Login</div></a></li>
-        <li><a href="/creation"><i class="fa-regular fa-pen-to-square"></i>
-          Create a story</a></li>
+       <li><a href="/creation"><i class="fa-regular fa-pen-to-square"></i>
+        Create a story</a></li>
+       <% } %>
+
       </ul>
     </div>
     <a class="logo" href="/">
     <i class="fa-solid fa-book-open-reader"></i></a>
     <% if(typeof userByID !== 'undefined'){ %>
-      <h5>Logged in as: <%= userByID.name %>! </h5>
+      <div id ='right-menu'>
+      <h2 class="font-weight-bold"><u> <%= userByID.name %></u> </h2>
+      <a href="/mystories">
+        <i class="fa-solid fa-book"></i>My Stories</a>
       <form class="form-inline" action="/logout" method="POST">
         <div class="form-group mb-2">
-          <button type="submit" class="btn btn-primary">Logout</button>
+          <button type="submit" id="logout-button" class="btn btn-primary"><i class="fa-solid fa-arrow-right-from-bracket"></i>logout</button>
         </div>
       </form>
+    </div>
     <% } else{ %>
       <div id ='right-menu'>
         <div>

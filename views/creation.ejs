@@ -26,10 +26,19 @@
     <%- include('partials/nav') %>
     <main>
    <form id = "create-form" method="POST" action = "/creation">
-
+    <label for="title">Title</label>
       <textarea placeholder="Title" name="title" id="create-title"></textarea>
+      <label for="content">Content</label>
       <textarea placeholder="Write a Story" name="content" id="create-story" ></textarea>
       <button class="create-button" type="submit">Create</button>
+      <% if(typeof error !== 'undefined'){ %>
+        <div class="error">
+          <p>
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <%= error %></p>
+        </div>
+        <% } %>
     </form>
+
   </main>
   </body>
