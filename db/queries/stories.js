@@ -59,4 +59,23 @@ const insertAddition = (data) =>{
     console.log(err.message);
   });
 }
-module.exports ={ getStories,getStory,getAdditions,insertStory,insertAddition};
+
+const removeAddition = (addition_id) => {
+  return db.query(`DELETE * FROM additions WHERE id = $1`, addition_id).then((result) => {
+    return result.rows[0]
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+}
+
+const removeAllAdditions = (story_id) => {
+  return db.query(`DELETE * FROM additions WHERE story_id = $1`, story_id).then((result) => {
+    return result.rows[0]
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+}
+
+module.exports ={ getStories, getStory, getAdditions, insertStory, insertAddition, removeAddition, removeAllAdditions};

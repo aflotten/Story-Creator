@@ -25,7 +25,7 @@ CREATE TABLE additions (
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   body VARCHAR(1000),
   time_posted TIMESTAMP,
-  accepted BOOLEAN
+  accepted BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE likes (
