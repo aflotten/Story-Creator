@@ -39,4 +39,16 @@ router.get('/:id/additions', (req, res) => {
         .json({ error: err.message });
     });
 });
+
+router.get('/mystories', (req, res) => {
+  storyQueries.getStoriesById (req.session.userId)
+    .then(stories => {
+      res.json({ stories });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
 module.exports = router;

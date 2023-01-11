@@ -25,7 +25,7 @@ $(document).ready(function() {
     return $story;
   };
 
-  const loadstories = function() {
+  const loadStories = function() {
 
     $.ajax({
       method: 'GET',
@@ -36,6 +36,6 @@ $(document).ready(function() {
     })
 
   };
-loadstories();
+loadStories();
 
 });
