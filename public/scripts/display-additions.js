@@ -1,14 +1,13 @@
 $(document).ready(function() {
 
-  const count =0;
   const id  = document.getElementById("add-id").content;
+  const userByID  = document.getElementById("user-id").content;
+  $('#like-error').hide();
+  
     const renderAdditions = function(additions) {
       additions.forEach(addition => {
         let $addition = createAdditionElement(addition)
-
-
         $('#additions-container').prepend($addition)
-
       });
     };
 
@@ -23,6 +22,7 @@ $(document).ready(function() {
   </article>`);
       return $story;
     };
+
     const createAdditionElement = function(additionData) {
       let  $addition = $(`
       <article class = 'addition-story'>
@@ -32,13 +32,13 @@ $(document).ready(function() {
     <button class="like-button" type="submit" value = ${additionData.id} >
     <i class="fa-regular fa-heart"></i>
     </button>
-    <button class="like-count" value =${additionData.id}>1</button>
+    <button class="like-count" value =${additionData.id}>${additionData.likes}</button>
     </div>
   </article>`);
       return $addition;
     };
 
-    const loadAddition = function() {
+    const loadAdditions = function() {
 
       $.ajax({
         method: 'GET',
@@ -57,7 +57,7 @@ $(document).ready(function() {
     .done((response) => {
       let $story = createStoryElement(response[0]);
         $('main').prepend($story);
-        loadAddition();
+        loadAdditions();
     })
   }
 
@@ -72,20 +72,30 @@ $(document).ready(function() {
   // const butt = $('.likes-button')
   $('#additions-container').on('click','.like-button',function(e){
 
+
     const thisId=e.currentTarget.value;
+    if (userByID === '') {
+      $('#like-error>p').text('Like this Post ? Sign in');
+      $('#like-error').slideDown(300).delay( 1000 ).slideUp(300);
+
+      return false;
+    }
+    //hides error div
+    $('#like-error').slideUp(300);
 
     $.ajax({
-      method: "GET",
+      method: "POST",
       url: `http://localhost:8080/additions/likes/${thisId}`,
       //dataType: JSON,
       success: function(data) {
         const {count} = data;
+        console.log(count);
         const elements = document.querySelectorAll(".like-count");
             for (i of elements) {
 
               if(i.value === thisId){
                 // console.log(i);
-                i.innerHTML = 2;
+                i.innerHTML = Number(count) + 1;
               }
         }
         // console.log(Number(count) + 1);

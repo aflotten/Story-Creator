@@ -237,8 +237,26 @@ textarea {
   align-items: center;
   justify-content: center;
   width:100%;
-  color: red;
-  border: 2px solid red;
+  color: $grey;
+  border: 2px solid $black;
+ }
+ #like-error>i{
+  margin:0px 10px;
+ }
+ #like-error{
+  position: fixed;
+  bottom: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  background-color: $white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width:50%;
+  color: $grey;
+  border: 2px solid $black;
  }
 @media only screen and (max-width: 1024px)  {
   #account{
