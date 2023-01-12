@@ -95,7 +95,6 @@ const removeAllAdditions = (story_id) => {
 const updateStory = (story_id, body) => {
   const dbParams = [story_id, body]
   return db.query(`UPDATE stories SET content = $2 WHERE stories.id = $1 RETURNING *;`, dbParams).then((result) => {
-    //console.log('test', result)
     return result.rows[0]
   })
     .catch((err) => {

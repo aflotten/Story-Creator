@@ -60,7 +60,6 @@ router.post('/:id/additions', (req, res) => {
     storyQueries.getAdditions(ID)
     .then(addition => {
       const newStory = story[0].content + addition[0].body
-      //console.log(newStory)
       storyQueries.updateStory(ID, newStory)
       .then(result => {
         storyQueries.removeAddition(ID)
