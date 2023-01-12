@@ -17,7 +17,7 @@ $(document).ready(function() {
     ${storyData.time_completed !== null ?
       `<h3> completed <button class = "completed" >
       <i class="fa-regular fa-square-check"></i>
-      </button></h3>`:`<h3> In progress <button class = "progress" >
+      </button></h3>`:`<h3> In progress <button class = "progress" value = ${storyData.id} >
       <i class="fa-regular fa-square-check"></i>
       </button></h3>` }
     </div>
@@ -86,6 +86,7 @@ $('#stories-container').on('click','.story-button',function(e){
   const id =e.currentTarget.value;
   loadAdditions(id,node);
   }
+})
 //add button
   $('#stories-container').on('click','.like-add',function(e){
 
@@ -93,8 +94,18 @@ $('#stories-container').on('click','.story-button',function(e){
     console.log(buttonValue);
   })
   //complete button
-  $('#stories-container').on('click','.completed',function(e){
-    console.log('hello');
+  $('#stories-container').on('click','.progress',function(e){
+    const buttonValue =e.currentTarget.value;
+    $.ajax({
+      url: "/completed",
+      type: "POST",
+      data: {
+          'story_id': buttonValue,
+      },
+      success: function(data){
+      }
+  });
+
   })
-})
+
 })

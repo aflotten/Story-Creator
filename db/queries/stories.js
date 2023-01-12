@@ -15,7 +15,7 @@ const getStories = () => {
 
 const getStory = (id) => {
   return db.query(
-    `SELECT stories.id as id,title,  name ,  TO_CHAR(time_created,'DD Mon YY') as date ,content,time_completed FROM stories
+    `SELECT stories.id as id,title,  name ,  TO_CHAR(time_created,'DD Mon YY') as date ,content,time_completed,user_id FROM stories
     JOIN users ON users.id = user_id
     WHERE stories.id = $1;
     `, [id])
@@ -91,4 +91,14 @@ const removeAllAdditions = (story_id) => {
     });
 };
 
-module.exports = { getStories, getStory, getStoriesById, getAdditions, insertStory, insertAddition, removeAddition, removeAllAdditions };
+const completedStory = (story_id) => {
+  return db.query(`UPDATE stories
+  SET time_completed = CURRENT_TIMESTAMP
+  WHERE id = $1;`, [story_id]).then((result) => {
+    return result.rows[0];
+  })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+module.exports = { getStories, getStory, getStoriesById, getAdditions, insertStory, insertAddition, removeAddition, removeAllAdditions,completedStory };
