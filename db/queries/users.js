@@ -32,10 +32,9 @@ const addUser = (user) => {
     .then(res => {
       return res.rows[0];
     })
-    .catch (err => {
-      return console.log("Error with query:", err)
-    })
-
-}
+    .catch(err => {
+      return console.log("Error with query:", err);
+    });
+};
 
 module.exports = { getUsers, getUserById, getUserByEmail, addUser };
