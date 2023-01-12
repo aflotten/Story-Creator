@@ -3,7 +3,7 @@ $(document).ready(function() {
   const id  = document.getElementById("add-id").content;
   const userByID  = document.getElementById("user-id").content;
   $('#like-error').hide();
-  
+
     const renderAdditions = function(additions) {
       additions.forEach(addition => {
         let $addition = createAdditionElement(addition)
@@ -45,6 +45,7 @@ $(document).ready(function() {
         url: `/api/${id}/additions`
       })
       .done((response) => {
+        console.log(response)
         renderAdditions(response.additions);
       })
 

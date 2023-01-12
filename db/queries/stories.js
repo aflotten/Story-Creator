@@ -38,7 +38,7 @@ const getStoriesById = (id) =>{
 }
 const insertStory = (data) =>{
   dbParams = [data.id, data.content, data.title]
-  return db.query(`INSERT INTO stories (user_id, content, title, time_created, time_completed) VALUES ($1, $2, $3, CURRENT_TIMESTAMP, NULL)RETURNING id`, dbParams).then((result) => {
+  return db.query(`INSERT INTO stories (user_id, content, title, time_created, time_completed) VALUES ($1, $2, $3, CURRENT_TIMESTAMP, NULL)RETURNING id;`, dbParams).then((result) => {
     return result.rows[0]
   })
   .catch((err) => {
@@ -66,7 +66,7 @@ const getAdditions = (id) => {
 
 const insertAddition = (data) =>{
   dbParams =[data.story_id, data.user_id, data.body]
-  return db.query(`INSERT INTO additions (story_id, user_id, body, time_posted, accepted) VALUES ($1, $2, $3, CURRENT_TIMESTAMP, FALSE);`,dbParams).then((result) => {
+  return db.query(`INSERT INTO additions (story_id, user_id, body, time_posted, accepted) VALUES ($1, $2, $3, CURRENT_TIMESTAMP, FALSE)RETURNING body; `,dbParams).then((result) => {
     return result.rows[0]
   })
   .catch((err) => {

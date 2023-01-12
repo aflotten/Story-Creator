@@ -23,14 +23,13 @@ $(document).ready(function() {
   const renderAdditions = function(additions,node) {
     additions.forEach(addition => {
       let $addition = createAdditionElement(addition)
-      //  this is the issue prepend isnt working returning an object object
-      node.prepend($addition)
+       $(node).prepend($addition)
+
     });
   };
 
   const createAdditionElement = function(additionData) {
-    console.log(additionData);
-    let  $addition = $(`
+    let  $addition = `
     <article class = 'addition-story'>
   <p class="username">${additionData.name}</p>
   <p>${additionData.body}</p>
@@ -41,7 +40,7 @@ $(document).ready(function() {
   <button class="like-count" value =${additionData.id}>${additionData.likes}</button>
   <button value = ${additionData.id}><i class="fa-solid fa-plus"></i></button>
   </div>
-</article>`);
+</article>`;
     return $addition;
   };
 
@@ -71,7 +70,19 @@ $(document).ready(function() {
 loadMyStories();
 $('#stories-container').on('click','.story-button',function(e){
   const node = e.currentTarget.parentNode.childNodes[7]
+  console.log(node.innerHTML)
+  if(node.innerHTML !== ''){
+    $(node).slideUp(400)
+    node.innerHTML = ''
+    $(node).slideDown(400)
+    return
+
+  }
+  else{
   const id =e.currentTarget.value;
   loadAdditions(id,node);
+  }
+  // $(node).slideDown(500).delay(100,()=>console.log('heelo'));
+
 })
 })
