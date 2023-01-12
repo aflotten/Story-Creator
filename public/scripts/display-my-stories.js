@@ -14,9 +14,12 @@ $(document).ready(function() {
     <button class= 'story-button' value = ${storyData.id}>
     <h1 class="title">${storyData.title}</h1>
     </button >
-    <button class = "completed" >
-    <i class="fa-regular fa-square-check"></i>
-    </button>
+    ${storyData.time_completed !== null ?
+      `<h3> completed <button class = "completed" >
+      <i class="fa-regular fa-square-check"></i>
+      </button></h3>`:`<h3> In progress <button class = "progress" >
+      <i class="fa-regular fa-square-check"></i>
+      </button></h3>` }
     </div>
     <h3 class = "date">${storyData.date}</h3>
   <p class ="content">${storyData.content}</p>
