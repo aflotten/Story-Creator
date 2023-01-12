@@ -70,7 +70,8 @@ const insertAddition = (data) =>{
 }
 
 const removeAddition = (addition_id) => {
-  return db.query(`DELETE * FROM additions WHERE id = $1`, addition_id).then((result) => {
+  return db.query(`DELETE FROM additions WHERE id = $1`, [addition_id]).then((result) => {
+    console.log('test')
     return result.rows[0]
   })
   .catch((err) => {
@@ -79,7 +80,7 @@ const removeAddition = (addition_id) => {
 }
 
 const removeAllAdditions = (story_id) => {
-  return db.query(`DELETE * FROM additions WHERE story_id = $1`, story_id).then((result) => {
+  return db.query(`DELETE FROM additions WHERE story_id = $1`, story_id).then((result) => {
     return result.rows[0]
   })
   .catch((err) => {
@@ -87,4 +88,15 @@ const removeAllAdditions = (story_id) => {
   });
 }
 
-module.exports ={ getStories, getStory,getStoriesById, getAdditions, insertStory, insertAddition, removeAddition, removeAllAdditions};
+const updateStory = (story_id, body) => {
+  const dbParams = [story_id, body]
+  return db.query(`UPDATE stories SET content = $2 WHERE stories.id = $1 RETURNING *;`, dbParams).then((result) => {
+    //console.log('test', result)
+    return result.rows[0]
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+}
+
+module.exports ={ getStories, getStory,getStoriesById, getAdditions, insertStory, insertAddition, removeAddition, removeAllAdditions, updateStory};

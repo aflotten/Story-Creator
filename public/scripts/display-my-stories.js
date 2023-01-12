@@ -82,10 +82,14 @@ $('#stories-container').on('click','.story-button',function(e){
   }
 //charlie
   $('#stories-container').on('click','.like-add',function(e){
-    const buttonValue =e.target;
-    console.log(buttonValue);
-  })
-  // $(node).slideDown(500).delay(100,()=>console.log('heelo'));
-
+    const buttonValue = e.target.parentNode.value;
+    $.ajax({
+      method: 'POST',
+      url: `/api/${buttonValue}/additions`
+    })
+    .done((response) => {
+      console.log('done')
+    })
+  });
 })
 })
