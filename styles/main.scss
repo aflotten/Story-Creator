@@ -17,6 +17,15 @@ main{
   width:100vw;
   height: calc(100vh - 5rem);
 }
+button{
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
 a{
   text-decoration: none;
   color: inherit;
@@ -135,13 +144,7 @@ nav i{
   background-color: $tuscany-dark;
 }
 .like-button{
-  background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+  margin-right: 1em;
 }
 .like-button i:hover{
   color: $blue;
@@ -156,7 +159,7 @@ nav i{
 	outline: inherit;
   font-family: $sub-font;
   font-weight: 200;
-  margin-left: 1em
+
 }
 .over-counter{
   color:$red;
@@ -215,6 +218,7 @@ textarea {
 .like-div{
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 #account{
   font-family: $main-font;
@@ -299,7 +303,13 @@ textarea {
   color:$red;
   // border: 2px solid $black;
  }
-
+.like-add{
+  margin-left : 1.5rem;
+  color: $grey;
+}
+.like-add i:hover{
+  color: $blue;
+}
 @media only screen and (max-width: 1024px)  {
   ::-webkit-input-placeholder{
     opacity: 0;

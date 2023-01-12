@@ -12,7 +12,8 @@ $(document).ready(function() {
     <article class = 'story'>
     <button class= 'story-button' value = ${storyData.id}>
     <h1 class="title">${storyData.title}</h1>
-    </button>
+    </button >
+
     <h3 class = "date">${storyData.date}</h3>
   <p class ="content">${storyData.content}</p>
   <section id ='#additions-container' ></section>
@@ -34,11 +35,8 @@ $(document).ready(function() {
   <p class="username">${additionData.name}</p>
   <p>${additionData.body}</p>
   <div class = 'like-div'>
-  <button class="like-button" type="submit" value = ${additionData.id} >
-  <i class="fa-regular fa-heart"></i>
-  </button>
   <button class="like-count" value =${additionData.id}>${additionData.likes}</button>
-  <button value = ${additionData.id}><i class="fa-solid fa-plus"></i></button>
+  <button class= 'like-add' value = ${additionData.id}><i class="fa-solid fa-plus"></i></button>
   </div>
 </article>`;
     return $addition;
@@ -82,6 +80,11 @@ $('#stories-container').on('click','.story-button',function(e){
   const id =e.currentTarget.value;
   loadAdditions(id,node);
   }
+//charlie
+  $('#stories-container').on('click','.like-add',function(e){
+    const buttonValue =e.target;
+    console.log(buttonValue);
+  })
   // $(node).slideDown(500).delay(100,()=>console.log('heelo'));
 
 })
