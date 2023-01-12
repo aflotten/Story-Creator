@@ -50,12 +50,10 @@ const getAdditions = (id) => {
    from stories then the user_id will be based off the story
    but with addition its based off additions*/
   return db.query(
-    `SELECT COUNT(likes.*) as likes, additions.id as id,name ,body FROM additions
+    `SELECT (SELECT COUNT(*) FROM likes WHERE addition_id = $1) as likes, additions.id as id,name ,body FROM additions
     JOIN users ON users.id = user_id
     JOIN stories ON stories.id = story_id
-    JOIN likes ON additions.id = addition_id
-    WHERE stories.id = $1
-    GROUP BY  name,additions.id;
+    WHERE stories.id = $1;
       `, [id])
     .then(data => {
       return data.rows;
