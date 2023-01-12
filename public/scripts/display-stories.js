@@ -15,9 +15,13 @@ $(document).ready(function() {
   const createStoryElement = function(storyData) {
     let  $story = $(`
     <article class = 'story'>
+    <div class = 'story-title'>
     <a href = '/additions/${storyData.id}'>
     <h1 class="title">${storyData.title}</h1>
     </a>
+    ${storyData.time_completed !== null ?
+      '<h4> completed</h4>':'<h4> In progress</h4>' }
+      </div>
     <h3 class = "date">${storyData.date}</h3>
     <h2 class="username">${storyData.name}</h2>
   <p class ="content">${storyData.content}</p>

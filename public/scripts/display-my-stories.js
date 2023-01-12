@@ -10,10 +10,17 @@ $(document).ready(function() {
 
     let  $story = $(`
     <article class = 'story'>
+    <div class = 'my-story-title'>
     <button class= 'story-button' value = ${storyData.id}>
     <h1 class="title">${storyData.title}</h1>
     </button >
-
+    ${storyData.time_completed !== null ?
+      `<h3> completed <button class = "completed" >
+      <i class="fa-regular fa-square-check"></i>
+      </button></h3>`:`<h3> In progress <button class = "progress" value = ${storyData.id} >
+      <i class="fa-regular fa-square-check"></i>
+      </button></h3>` }
+    </div>
     <h3 class = "date">${storyData.date}</h3>
   <p class ="content">${storyData.content}</p>
   <section id ='#additions-container' ></section>
@@ -67,8 +74,7 @@ $(document).ready(function() {
   };
 loadMyStories();
 $('#stories-container').on('click','.story-button',function(e){
-  const node = e.currentTarget.parentNode.childNodes[7]
-  console.log(node.innerHTML)
+  const node = e.currentTarget.parentNode.parentNode.childNodes[7]
   if(node.innerHTML !== ''){
     $(node).slideUp(400)
     node.innerHTML = ''
@@ -80,7 +86,8 @@ $('#stories-container').on('click','.story-button',function(e){
   const id =e.currentTarget.value;
   loadAdditions(id,node);
   }
-//charlie
+})
+//add button
   $('#stories-container').on('click','.like-add',function(e){
     const buttonValue = e.target.parentNode.value;
     $.ajax({
@@ -91,5 +98,4 @@ $('#stories-container').on('click','.story-button',function(e){
       console.log('done')
     })
   });
-})
 })
