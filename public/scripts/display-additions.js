@@ -14,13 +14,23 @@ $(document).ready(function() {
     const createStoryElement = function(storyData) {
       let  $story = $(`
       <article class = 'story'>
-      <h1 class="title-add">${storyData.title}</h1>
-      <h5 class = "username">${storyData.name} - ${storyData.date}</h5>
-    <p class ="content">${storyData.content}</p>
+        <h1 class="title-add">${storyData.title}</h1>
+        <h5 class = "username">${storyData.name} - ${storyData.date}</h5>
+        <p class ="content">${storyData.content}</p>
+      </article>
+      ${storyData.time_completed === null ?`<h3 class="add-comment-title">Story Additions</h3>
+      <form id="add-form" method="POST" action="/additions/<%= id %>" >
+        <textarea placeholder="Add to story" name="addition" id="add-text"></textarea>
+        <div>
+          <output name="counter" class="counter" for="add-text">1000</output>
+          <button class="add-button" type="submit">Post</button>
+        </div>
+      </form>` : ''}
+  `)
 
-  </article>`);
-      return $story;
-    };
+
+    return $story;
+   }
 
     const createAdditionElement = function(additionData) {
       let  $addition = $(`

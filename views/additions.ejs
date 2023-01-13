@@ -31,15 +31,8 @@
   <body>
     <%- include('partials/nav') %>
     <main>
-      
-      <h3 class="add-comment-title">Story Additions</h3>
-      <form id="add-form" method="POST" action="/additions/<%= id %>" >
-        <textarea placeholder="Add to story" name="addition" id="add-text"></textarea>
-        <div>
-          <output name="counter" class="counter" for="add-text">1000</output>
-          <button class="add-button" type="submit">Post</button>
-        </div>
-      </form>
+
+     
       <div class="error">
         <p></p>
       </div>
