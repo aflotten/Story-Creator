@@ -112,5 +112,21 @@ const completedStory = (story_id) => {
       console.log(err.message);
     });
 };
-module.exports = { getStories, getStory, getStoriesById, getAdditions, insertStory, insertAddition, removeAddition, removeAllAdditions,completedStory };
+
+const getAdditionsById = (id) => {
+  return db.query(
+    `SELECT (SELECT COUNT(*) FROM likes WHERE addition_id = $1) as likes, additions.id as id, name, body FROM additions
+    JOIN users ON users.id = user_id
+    JOIN stories ON stories.id = story_id
+    WHERE additions.id = $1;
+    `, [id])
+    .then(data => {
+      return data.rows;
+    }).catch(err => {
+      return console.log("Error with query:", err);
+    });
+};
+
+
+module.exports = { getStories, getStory, getStoriesById, getAdditions, insertStory, insertAddition, removeAddition, removeAllAdditions,completedStory, updateStory, getAdditionsById };
 

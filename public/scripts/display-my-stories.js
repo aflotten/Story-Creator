@@ -90,14 +90,16 @@ $(document).ready(function () {
   //add button
   $('#stories-container').on('click', '.like-add', function (e) {
     const buttonValue = e.target.parentNode.value;
+    const storyid = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.childNodes[1].childNodes[1].value;
     $.ajax({
       method: 'POST',
-      url: `/api/${buttonValue}/additions`
+      url: `/api/${buttonValue}/additions`,
+      data: { story_id: storyid }
     })
       .done((response) => {
         console.log('done')
         $('#stories-container').empty()
-        loadMyStories()// .empty(div class container (before loadMyStories()));
+        loadMyStories();
       })
   });
 

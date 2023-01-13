@@ -55,12 +55,17 @@ router.get('/mystories', (req, res) => {
 
 router.post('/:id/additions', (req, res) => {
   const ID = req.params.id;
-  storyQueries.getStory(ID)
+  const { story_id } = req.body;
+  storyQueries.getStory(story_id)
   .then(story => {
-    storyQueries.getAdditions(ID)
+    console.log("LOOK HERE", ID)
+    storyQueries.getAdditionsById(ID)
     .then(addition => {
+      console.log(addition)
       const newStory = story[0].content + addition[0].body
-      storyQueries.updateStory(ID, newStory)
+      console.log("TESTTEST:", newStory)
+
+      storyQueries.updateStory(story_id, newStory)
       .then(result => {
         storyQueries.removeAddition(ID)
         .then(result => {
