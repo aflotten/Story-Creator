@@ -63,6 +63,7 @@ $(document).ready(function() {
     $('.error').slideUp(300);
     //clears text-area
     $("#add-text").val('');
+    $('.counter').val(1000);
     $.ajax({
         method: 'POST',
         url: actionUrl,

@@ -15,23 +15,25 @@ $(document).ready(function () {
     <h1 class="title">${storyData.title}</h1>
     </button >
     ${storyData.time_completed !== null ?
-        `<h3> completed <button class = "completed" >
+        `<h3 class = "completed"> completed <button>
       <i class="fa-regular fa-square-check"></i>
-      </button></h3>`: `<h3> In progress <button class = "progress" value = ${storyData.id} >
+      </button></h3>`: `<h3 class = "progress"> In progress <button  value = ${storyData.id} >
       <i class="fa-regular fa-square-check"></i>
       </button></h3>` }
     </div>
-    <h3 class = "date">${storyData.date}</h3>
+    <h5 class = "username">${storyData.date}</h5>
   <p class ="content">${storyData.content}</p>
+
   <section id ='#additions-container' ></section>
 </article>`);
     return $story;
   };
 
   const renderAdditions = function (additions, node) {
+    $(node).prepend('<hr class="solid"> ')
     additions.forEach(addition => {
       let $addition = createAdditionElement(addition)
-      $(node).prepend($addition)
+      $(node).append($addition)
 
     });
   };
@@ -104,7 +106,7 @@ $(document).ready(function () {
   });
 
   //complete button
-  $('#stories-container').on('click', '.progress', function (e) {
+  $('#stories-container').on('click', '.progress button', function (e) {
     const buttonValue = e.currentTarget.value;
     $.ajax({
       url: "/completed",

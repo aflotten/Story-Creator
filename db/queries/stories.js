@@ -3,7 +3,7 @@ const db = require('../connection');
 /**  you need story id , title,username,content,date */
 const getStories = () => {
   return db.query(
-    `SELECT stories.id as id,title,  name ,  TO_CHAR(time_created,'DD Mon YY') as date ,content,time_completed FROM stories
+    `SELECT stories.id as id,title,  name ,  TO_CHAR(time_created,'Mon DD') as date ,content,time_completed FROM stories
     JOIN users ON users.id = user_id;  `)
     .then(data => {
       return data.rows;
@@ -15,7 +15,7 @@ const getStories = () => {
 
 const getStory = (id) => {
   return db.query(
-    `SELECT stories.id as id,title,  name ,  TO_CHAR(time_created,'DD Mon YY') as date ,content,time_completed,user_id FROM stories
+    `SELECT stories.id as id,title,  name ,  TO_CHAR(time_created,'Mon DD') as date ,content,time_completed,user_id FROM stories
     JOIN users ON users.id = user_id
     WHERE stories.id = $1;
     `, [id])
@@ -28,7 +28,7 @@ const getStory = (id) => {
 
 const getStoriesById = (id) => {
   return db.query(
-    `SELECT stories.id as id,title,  name ,  TO_CHAR(time_created,'DD Mon YY') as date ,content,time_completed FROM stories
+    `SELECT stories.id as id,title,  name ,  TO_CHAR(time_created,'Mon DD') as date ,content,time_completed FROM stories
     JOIN users ON users.id = user_id
     WHERE users.id = $1;
     `, [id])
@@ -51,7 +51,7 @@ const insertStory = (data) => {
 
 const getAdditions = (id) => {
   return db.query(
-    `SELECT (SELECT COUNT(*) FROM likes WHERE addition_id = $1) as likes, additions.id as id, name, body FROM additions
+    `SELECT (SELECT COUNT(*) FROM likes WHERE addition_id = $1) as likes, additions.id as id, name, body, TO_CHAR(time_posted,'Mon DD') as date FROM additions
     JOIN users ON users.id = user_id
     JOIN stories ON stories.id = story_id
     WHERE stories.id = $1;

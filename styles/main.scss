@@ -1,14 +1,22 @@
 
-$white :  #F7F7FF;
-$tuscany :#C49991;
-$tuscany-dark:#886963;
-$blue : #279AF1;
-$grey : #60656F;
-$black : #131112;
+$white :  #f6f7f8;
+$middle-red :#F78E69;
+$light:#49DCB1;
+$lighter:#69f9ce;
+$yellow : #F1BB87;
+$blue : #456990;
+$black : #011627;
 $red : #d40f0f;
+$temp-gray :rgb(83, 100, 113);
 $sub-font: 'Open Sans', sans-serif;
 $main-font: 'Playfair Display', serif;
-
+*{
+  font-family: $sub-font
+}
+img{
+  width: 150px;				/* width of image (px or % or auto) */
+  height: auto;
+}
 main{
   color :$black;
   background-color: $white;
@@ -34,10 +42,10 @@ h1{
   margin:0
 }
 .username{
-  color: $blue;
+  color :$temp-gray
 }
 header{
-  background-color:$grey;
+  background-color:$blue;
   padding: 0 2rem;
   width: 100vw;
   position: fixed;
@@ -56,6 +64,7 @@ nav{
   color: $white;
 
 }
+
 #top{
   position :fixed;
   opacity: 50%;
@@ -67,7 +76,7 @@ nav{
 }
 
 nav a:hover{
-  color: #279AF1;
+  color: $light;
 }
 #right-menu{
   display: flex;
@@ -78,6 +87,16 @@ nav a:hover{
 #right-menu > *:not(:last-child){
   margin-right: 2rem;
 }
+#left-menu{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+#left-menu > *:not(:last-child){
+  margin-right: 2rem;
+}
+
 nav i{
   margin-right: 1rem;
 }
@@ -90,7 +109,7 @@ nav i{
    z-index:10;
 }
 #logout-button{
-  background: $grey;
+  background: $blue;
 	color: inherit;
 	border: none;
 	font: inherit;
@@ -99,14 +118,24 @@ nav i{
 
 }
 #logout-button:hover{
-  color: $blue;
+  color: $light;
 }
 ::placeholder{
   opacity: attr();
 }
+.story{
+  margin-top:3rem;
+  margin-bottom: 5rem;
+}
 .story .title:hover{
-  color: $grey;
+  color: $middle-red;
  }
+ .story-title{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
 #add-form{
   margin-top: 5rem;
 }
@@ -115,14 +144,23 @@ nav i{
   flex-direction: row;
   justify-content: space-between;
 }
+hr.solid {
+  border-top: 3px solid #bbb;
+}
 #add-text{
   width:100%;
   height: 8rem;
   margin-bottom: 0.5rem;
   border:none;
-  border-bottom: 4px solid $grey;
+  border-bottom: 4px solid $blue;
   background-color: $white;
-  font-family: $sub-font;
+}
+.add-comment-title{
+  margin-top: 5rem;
+  margin-bottom: 0;
+  font-weight: 100;
+  font-family: $main-font;
+  text-decoration: underline;
 }
 #add-text:hover{
   border-color: $black;
@@ -134,20 +172,25 @@ nav i{
 .add-button{
   font-family: $main-font;
   color :$black;
-  background-color:$tuscany ;
+  background-color:$light ;
   width: 10%;
   height: 2rem;
   border:none;
   border-radius:5em;
 }
 .add-button:hover{
-  background-color: $tuscany-dark;
+  // change this make it lighter
+  background-color: $lighter;
+}
+.addition-story{
+  margin-top: 3rem;
+  margin-bottom: 1rem;
 }
 .like-button{
   margin-right: 1em;
 }
 .like-button i:hover{
-  color: $blue;
+  color: $light;
 }
 .like-count{
   background: none;
@@ -157,7 +200,6 @@ nav i{
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
-  font-family: $sub-font;
   font-weight: 200;
 
 }
@@ -181,7 +223,7 @@ textarea {
   margin-top: 5em;
 }
 #create-form textarea{
-  border: 1px solid $grey;
+  border: 1px solid $blue;
 }
 #create-form textarea:hover{
   border: 1.5px solid $black;
@@ -205,14 +247,14 @@ textarea {
 .create-button{
   font-family: $main-font;
   color :$black;
-  background-color:$tuscany ;
+  background-color:$light;
   width: 10%;
   height: 2rem;
   border:none;
   border-radius:5em;
 }
 .create-button:hover{
-  background-color: $tuscany-dark;
+  background-color: $lighter;
 }
 
 .like-div{
@@ -225,7 +267,7 @@ textarea {
   display: flex;
   flex-direction: column;
   align-items:center;
-  background-color: $tuscany;
+  background-color: $middle-red;
   width :40%;
   margin-left: auto;
   margin-right: auto;
@@ -238,13 +280,16 @@ textarea {
   border-radius: 5em;
   width:20em;
   height: 2em;
-  background: $grey;
+  background: $yellow;
 	color: inherit;
 	border: none;
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
 
+}
+#account h1{
+  margin-top: 2em;
 }
 #account button:hover{
   border: 2px solid  $black;
@@ -263,7 +308,6 @@ textarea {
   border: 1px solid $blue;
 }
 #account label{
-  font-family: $sub-font;
   font-size: 1.5rem;
   margin-top: 2em;
 }
@@ -305,10 +349,10 @@ textarea {
  }
 .like-add{
   margin-left : 1.5rem;
-  color: $grey;
+  color: $blue;
 }
 .like-add i:hover{
-  color: $blue;
+  color: $middle-red;
 }
 .my-story-title{
   display:flex;
@@ -316,25 +360,24 @@ textarea {
   align-items: center;
   flex-direction: row;
 }
-.my-story-title .title{
+.my-story-title ,.title,.title-add{
+  font-family: $main-font;
   color:  $blue;
 }
 .progress{
   color:$black
 }
 .progress :hover{
-  color:  $grey;
+  color:  $blue;
 }
 .completed{
   color: $blue
 }
-.story-title{
-  display:flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-}
+
 @media only screen and (max-width: 1024px)  {
+  nav{
+    justify-content: flex-start;
+  }
   ::-webkit-input-placeholder{
     opacity: 0;
   }
@@ -352,6 +395,7 @@ textarea {
   }
   .toggle-button{
     display: block;
+    color: $white;
   }
   .logo{
     margin-right: 50%
@@ -373,7 +417,7 @@ textarea {
     top: 5rem;
     margin: 0;
     padding: 0;
-    background-color: $grey;
+    background-color: $blue;
     height: calc(100vh - 7rem);
     width: 50vw;
     transition: all 0.3s ease-in-out;

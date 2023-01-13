@@ -31,27 +31,23 @@
   <body>
     <%- include('partials/nav') %>
     <main>
+      
+      <h3 class="add-comment-title">Story Additions</h3>
       <form id="add-form" method="POST" action="/additions/<%= id %>" >
-
         <textarea placeholder="Add to story" name="addition" id="add-text"></textarea>
         <div>
-          <button class="add-button" type="submit">Post Story</button>
           <output name="counter" class="counter" for="add-text">1000</output>
+          <button class="add-button" type="submit">Post</button>
         </div>
       </form>
-<form id="add-form" method="POST" action="/additions/<%= id %>" >
-  <div class="error">
-
-    <p></p>
-
-  </div>
-</form>
-<section id="additions-container">
-
-</section>
-<div id ='like-error'>
-    <p></p>
-</div>
+      <div class="error">
+        <p></p>
+      </div>
+      <section id="additions-container">
+      </section>
+      <div id ='like-error'>
+        <p></p>
+      </div>
 </main>
   </body>
   <script defer src="/scripts/counter.js"></script>

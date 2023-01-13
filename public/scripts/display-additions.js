@@ -14,9 +14,8 @@ $(document).ready(function() {
     const createStoryElement = function(storyData) {
       let  $story = $(`
       <article class = 'story'>
-      <h1 class="title">${storyData.title}</h1>
-      <h3 class = "date">${storyData.date}</h3>
-      <h2 class="username">${storyData.name}</h2>
+      <h1 class="title-add">${storyData.title}</h1>
+      <h5 class = "username">${storyData.name} - ${storyData.date}</h5>
     <p class ="content">${storyData.content}</p>
 
   </article>`);
@@ -26,7 +25,7 @@ $(document).ready(function() {
     const createAdditionElement = function(additionData) {
       let  $addition = $(`
       <article class = 'addition-story'>
-    <p class="username">${additionData.name}</p>
+    <p class="username">${additionData.name} - ${additionData.date}</p>
     <p>${additionData.body}</p>
     <div class = 'like-div'>
     <button class="like-button" type="submit" value = ${additionData.id} >

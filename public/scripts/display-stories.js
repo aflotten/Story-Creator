@@ -22,8 +22,7 @@ $(document).ready(function() {
     ${storyData.time_completed !== null ?
       '<h4> completed</h4>':'<h4> In progress</h4>' }
       </div>
-    <h3 class = "date">${storyData.date}</h3>
-    <h2 class="username">${storyData.name}</h2>
+      <h5 class = "username">${storyData.name} - ${storyData.date}</h5>
   <p class ="content">${storyData.content}</p>
 </article>`);
     return $story;

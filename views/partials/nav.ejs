@@ -1,12 +1,21 @@
 <header id="navbar">
   <nav >
-    <a id = "left-menu" href="/creation"><i class="fa-regular fa-pen-to-square"></i>
+    <div id = "left-menu">
+      <% if(typeof userByID !== 'undefined'){ %>
+      <p><i class="fa-solid fa-id-badge"></i><%= userByID.name %> </p>
+      <% }  %>
+    <a  href="/creation"><i class="fa-regular fa-pen-to-square"></i>
       Create a story</a>
-    <a class = 'toggle-button'><i class="fa-solid fa-bars"></i></a>
 
+
+
+  </div>
+  <a class = 'toggle-button'><i class="fa-solid fa-bars"></i></a>
       <ul class="mobile-menu">
         <% if(typeof userByID !== 'undefined'){ %>
-          <li><h2> <%= userByID.name %> </h2></li>
+          <li><p><i class="fa-solid fa-id-badge"></i><%= userByID.name %> </p></li>
+          <li><a  href="/">
+            <i class="fa-solid fa-house-chimney"></i>Home</a></li>
           <li><a href="/mystories">
             <i class="fa-solid fa-book"></i>My Stories</a></li>
             <li><a href="/creation"><i class="fa-regular fa-pen-to-square"></i>
@@ -15,8 +24,10 @@
             <div class="form-group mb-2">
               <button type="submit" id="logout-button" class="btn btn-primary"><i class="fa-solid fa-arrow-right-from-bracket"></i>logout</button></li>
           <% } else{ %>
-        <li><a href="/register">
-          <i class="fa-sharp fa-solid fa-right-to-bracket"></i>Sign Up </a></li>
+              <li><a  href="/">
+              <i class="fa-solid fa-house-chimney"></i>Home</a></li>
+              <li><a href="/register">
+              <i class="fa-sharp fa-solid fa-right-to-bracket"></i>Sign Up </a></li>
 
        <li><a href="/login"><div><i class="fa-solid fa-key"></i>Login</div></a></li>
        <li><a href="/creation"><i class="fa-regular fa-pen-to-square"></i>
@@ -24,12 +35,13 @@
        <% } %>
 
       </ul>
-    </div>
-    <a class="logo" href="/">
-    <i class="fa-solid fa-book-open-reader"></i></a>
+
+      <a href="/"><img src="img/logo.png"/></a>
     <% if(typeof userByID !== 'undefined'){ %>
+
+
       <div id ='right-menu'>
-      <h2 class="font-weight-bold"><u> <%= userByID.name %></u> </h2>
+
       <a href="/mystories">
         <i class="fa-solid fa-book"></i>My Stories</a>
       <form class="form-inline" action="/logout" method="POST">
