@@ -20,7 +20,7 @@ $(document).ready(function() {
     <h1 class="title">${storyData.title}</h1>
     </a>
     ${storyData.time_completed !== null ?
-      '<h4> completed</h4>':'<h4> In progress</h4>' }
+      '<h4 class= "completed"> completed</h4>':'<h4> In progress</h4>' }
       </div>
       <h5 class = "username">${storyData.name} - ${storyData.date}</h5>
   <p class ="content">${storyData.content}</p>

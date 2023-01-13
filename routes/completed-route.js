@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const storyQueries = require('../db/queries/stories');
+const userQueries = require('../db/queries/users');
 // Get method for displaying login
 router.post('/', (req, res) => {
   const userid = req.session.userId;
@@ -10,14 +11,16 @@ router.post('/', (req, res) => {
       .then(story => {
         //checks if the user logged in is the creator of the story
         if(story[0].user_id === userid){
-
           storyQueries.completedStory(story_id).then(story =>{
-
             userQueries.getUserById(userid)
-              .then(user => {
-                console.log('hello');
-                res.render('mystories', {userByID: user});
-              })
+            .then(user => {
+
+                storyQueries.removeAllAdditions(story_id).
+                then(returned =>{
+
+                  res.render('mystories', {userByID: user});
+                }).catch(error => res.send(error))
+              }).catch(error => res.send(error))
           }).catch(error => res.send(error))
 
         }

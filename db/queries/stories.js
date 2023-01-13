@@ -84,7 +84,7 @@ const removeAddition = (addition_id) => {
 };
 
 const removeAllAdditions = (story_id) => {
-  return db.query(`DELETE FROM additions WHERE story_id = $1`, story_id).then((result) => {
+  return db.query(`DELETE FROM additions WHERE story_id = $1`, [story_id]).then((result) => {
     return result.rows[0]
   })
   .catch((err) => {

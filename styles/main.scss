@@ -76,7 +76,7 @@ nav{
 }
 
 nav a:hover{
-  color: $light;
+  color: $middle-red;
 }
 #right-menu{
   display: flex;
@@ -118,7 +118,7 @@ nav i{
 
 }
 #logout-button:hover{
-  color: $light;
+  color: $middle-red;
 }
 ::placeholder{
   opacity: attr();
@@ -161,12 +161,13 @@ hr.solid {
   font-weight: 100;
   font-family: $main-font;
   text-decoration: underline;
+  color: $blue
 }
 #add-text:hover{
   border-color: $black;
 }
 #add-text:focus{
-  border-color: $blue;
+  border-color: $light;
 }
 
 .add-button{
@@ -229,7 +230,7 @@ textarea {
   border: 1.5px solid $black;
 }
 #create-form textarea:focus{
-  border: 1px solid $blue;
+  border: 1px solid $light;
 }
 #create-form label{
   font-family: $main-font;
@@ -263,7 +264,6 @@ textarea {
   align-items: center;
 }
 #account{
-  font-family: $main-font;
   display: flex;
   flex-direction: column;
   align-items:center;
