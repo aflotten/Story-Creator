@@ -58,13 +58,9 @@ router.post('/:id/additions', (req, res) => {
   const { story_id } = req.body;
   storyQueries.getStory(story_id)
   .then(story => {
-    console.log("LOOK HERE", ID)
     storyQueries.getAdditionsById(ID)
     .then(addition => {
-      console.log(addition)
-      const newStory = story[0].content + addition[0].body
-      console.log("TESTTEST:", newStory)
-
+      const newStory = story[0].content + " " + addition[0].body
       storyQueries.updateStory(story_id, newStory)
       .then(result => {
         storyQueries.removeAddition(ID)
