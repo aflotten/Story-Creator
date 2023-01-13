@@ -111,6 +111,7 @@ $(document).ready(function () {
         'story_id': buttonValue,
       },
       success: function (data) {
+        location.reload();
       }
     });
 

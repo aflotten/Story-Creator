@@ -102,4 +102,15 @@ const updateStory = (story_id, body) => {
     });
 };
 
-module.exports ={ getStories, getStory,getStoriesById, getAdditions, insertStory, insertAddition, removeAddition, removeAllAdditions, updateStory};
+const completedStory = (story_id) => {
+  return db.query(`UPDATE stories
+  SET time_completed = CURRENT_TIMESTAMP
+  WHERE id = $1;`, [story_id]).then((result) => {
+    return result.rows[0];
+  })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+module.exports = { getStories, getStory, getStoriesById, getAdditions, insertStory, insertAddition, removeAddition, removeAllAdditions,completedStory };
+
