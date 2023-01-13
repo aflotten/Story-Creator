@@ -1,10 +1,5 @@
 $(document).ready(function() {
 
-  /** function that goes through an array of tweet data
- the renders them onto the #tweets-container
- */
-
-
   const renderStories = function(stories) {
     stories.forEach(story => {
       let $story = createStoryElement(story);

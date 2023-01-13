@@ -13,10 +13,11 @@ $(document).ready(function() {
     } else {
       $nav.css({'top':'-5rem'});
       $top.css({'display':'block'})
-    
+
     }
     prevScrollpos = currentScrollPos;
 };
+// scrolls to the top on arrow button click
   $top.click(function(){
     window.scroll({
       top: 0,

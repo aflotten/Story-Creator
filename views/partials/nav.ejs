@@ -1,6 +1,7 @@
 <header id="navbar">
   <nav >
     <div id = "left-menu">
+       <!-- menu changes depending on if a user is logged in or not -->
       <% if(typeof userByID !== 'undefined'){ %>
       <p><i class="fa-solid fa-id-badge"></i><%= userByID.name %> </p>
       <% }  %>
@@ -11,6 +12,7 @@
 
   </div>
   <a class = 'toggle-button'><i class="fa-solid fa-bars"></i></a>
+
       <ul class="mobile-menu">
         <% if(typeof userByID !== 'undefined'){ %>
           <li><p><i class="fa-solid fa-id-badge"></i><%= userByID.name %> </p></li>

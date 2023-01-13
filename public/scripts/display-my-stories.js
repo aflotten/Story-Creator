@@ -99,7 +99,6 @@ $(document).ready(function () {
       data: { story_id: storyid }
     })
       .done((response) => {
-        console.log('done')
         $('#stories-container').empty()
         loadMyStories();
       })
@@ -115,7 +114,6 @@ $(document).ready(function () {
         'story_id': buttonValue,
       },
       success: function (data) {
-        console.log('hello')
         location.reload();
       }
     });

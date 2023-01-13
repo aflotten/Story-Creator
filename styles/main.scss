@@ -174,7 +174,7 @@ hr.solid {
   font-family: $main-font;
   color :$black;
   background-color:$light ;
-  width: 10%;
+  padding: 0 3rem;
   height: 2rem;
   border:none;
   border-radius:5em;
@@ -246,13 +246,15 @@ textarea {
   margin: 3rem;
 }
 .create-button{
+  display: block;
   font-family: $main-font;
   color :$black;
   background-color:$light;
-  width: 10%;
+  padding: 0 3rem;
   height: 2rem;
   border:none;
   border-radius:5em;
+
 }
 .create-button:hover{
   background-color: $lighter;
