@@ -1,23 +1,23 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
-  const renderStories = function(stories) {
+  const renderStories = function (stories) {
     stories.forEach(story => {
       let $story = createStoryElement(story);
       $('#stories-container').prepend($story);
     });
   };
-  const createStoryElement = function(storyData) {
+  const createStoryElement = function (storyData) {
 
-    let  $story = $(`
+    let $story = $(`
     <article class = 'story'>
     <div class = 'my-story-title'>
     <button class= 'story-button' value = ${storyData.id}>
     <h1 class="title">${storyData.title}</h1>
     </button >
     ${storyData.time_completed !== null ?
-      `<h3> completed <button class = "completed" >
+        `<h3> completed <button class = "completed" >
       <i class="fa-regular fa-square-check"></i>
-      </button></h3>`:`<h3> In progress <button class = "progress" value = ${storyData.id} >
+      </button></h3>`: `<h3> In progress <button class = "progress" value = ${storyData.id} >
       <i class="fa-regular fa-square-check"></i>
       </button></h3>` }
     </div>
@@ -28,16 +28,16 @@ $(document).ready(function() {
     return $story;
   };
 
-  const renderAdditions = function(additions,node) {
+  const renderAdditions = function (additions, node) {
     additions.forEach(addition => {
       let $addition = createAdditionElement(addition)
-       $(node).prepend($addition)
+      $(node).prepend($addition)
 
     });
   };
 
-  const createAdditionElement = function(additionData) {
-    let  $addition = `
+  const createAdditionElement = function (additionData) {
+    let $addition = `
     <article class = 'addition-story'>
   <p class="username">${additionData.name}</p>
   <p>${additionData.body}</p>
@@ -49,53 +49,73 @@ $(document).ready(function() {
     return $addition;
   };
 
-  const loadMyStories = function() {
+  const loadMyStories = function () {
 
     $.ajax({
       method: 'GET',
       url: '/api/mystories'
     })
-    .done((response) => {
-      renderStories(response.stories);
-    })
+      .done((response) => {
+        renderStories(response.stories);
+      })
 
   };
-  const loadAdditions = function(id,node) {
+  const loadAdditions = function (id, node) {
 
     $.ajax({
       method: 'GET',
       url: `/api/${id}/additions`
     })
-    .done((response) => {
+      .done((response) => {
 
-      renderAdditions(response.additions,node);
-    })
+        renderAdditions(response.additions, node);
+      })
 
   };
-loadMyStories();
-$('#stories-container').on('click','.story-button',function(e){
-  const node = e.currentTarget.parentNode.parentNode.childNodes[7]
-  if(node.innerHTML !== ''){
-    $(node).slideUp(400)
-    node.innerHTML = ''
-    $(node).slideDown(400)
-    return
+  loadMyStories();
+  $('#stories-container').on('click', '.story-button', function (e) {
+    const node = e.currentTarget.parentNode.parentNode.childNodes[7]
+    if (node.innerHTML !== '') {
+      $(node).slideUp(400)
+      node.innerHTML = ''
+      $(node).slideDown(400)
+      return
 
-  }
-  else{
-  const id =e.currentTarget.value;
-  loadAdditions(id,node);
-  }
-})
-//add button
-  $('#stories-container').on('click','.like-add',function(e){
+    }
+    else {
+      const id = e.currentTarget.value;
+      loadAdditions(id, node);
+    }
+  })
+  //add button
+  $('#stories-container').on('click', '.like-add', function (e) {
     const buttonValue = e.target.parentNode.value;
     $.ajax({
       method: 'POST',
       url: `/api/${buttonValue}/additions`
     })
-    .done((response) => {
-      console.log('done')
-    })
+      .done((response) => {
+        console.log('done')
+        $('#stories-container').empty()
+        loadMyStories()// .empty(div class container (before loadMyStories()));
+      })
   });
+
+  //complete button
+  $('#stories-container').on('click', '.progress', function (e) {
+    const buttonValue = e.currentTarget.value;
+    $.ajax({
+      url: "/completed",
+      type: "POST",
+      data: {
+        'story_id': buttonValue,
+      },
+      success: function (data) {
+      }
+    });
+
+  })
+
 })
+
+
