@@ -7,15 +7,15 @@ const userQueries = require('../db/queries/users');
 
 
 router.get('/', (req, res) => {
-
-  if (!req.session.userId) {
-    userQueries.getUserById(req.session.userId)
+  const user_id = req.session.userId;
+  if (!user_id) {
+    userQueries.getUserById(user_id)
     .then(user => {
       res.render('mystories', {userByID: user});
     })
     .catch(error => res.send(error))
 } else {
-    userQueries.getUserById(req.session.userId)
+    userQueries.getUserById(user_id)
     .then(user => {
       res.render('mystories', {userByID: user});
     })

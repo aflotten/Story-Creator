@@ -8,11 +8,8 @@ router.get('/', (req, res) => {
   if (req.session.userId) {
     res.redirect('/')
   } else {
-    // userQueries.getUserById(req.session.userId)
-    //   .then(user => {
         res.render('register', {});
-      // })
-      // .catch(error => res.send(error))
+
   }
 });
 

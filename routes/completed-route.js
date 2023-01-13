@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const storyQueries = require('../db/queries/stories');
 const userQueries = require('../db/queries/users');
-// Get method for displaying login
+// Post method change in progress to completed story
 router.post('/', (req, res) => {
   const userid = req.session.userId;
   if (userid) {

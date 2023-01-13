@@ -66,9 +66,7 @@ app.use('/logout', logoutRoutes);
 app.use('/api', apiRoutes);
 app.use('/mystories',myStoriesRoutes);
 app.use('/completed',completedRoute);
-// Home page
-// Warning: avoid creating more routes in this file!
-// Separate them into separate routes files (see above).
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

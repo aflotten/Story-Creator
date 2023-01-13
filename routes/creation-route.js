@@ -4,6 +4,7 @@ const router = express.Router();
 const storyQueries = require('../db/queries/stories');
 const userQueries = require('../db/queries/users');
 
+//gets creations page
 router.get('/', (req, res) => {
   if (req.session.userId) {
   userQueries.getUserById(req.session.userId)
@@ -17,6 +18,7 @@ router.get('/', (req, res) => {
   }
 });
 
+//checks if there are no errors then post the users story to the database
 router.post('/', (req, res)=> {
   if (req.session.userId) {
   userQueries.getUserById(req.session.userId)

@@ -1,7 +1,11 @@
 $(document).ready(function() {
-
+  //id for the story
   const id  = document.getElementById("add-id").content;
+
+  //logged in user id
   const userByID  = document.getElementById("user-id").content;
+
+  //hides error div
   $('#like-error').hide();
 
     const renderAdditions = function(additions) {
@@ -19,7 +23,7 @@ $(document).ready(function() {
         <p class ="content">${storyData.content}</p>
       </article>
       ${storyData.time_completed === null ?`<h3 class="add-comment-title">Story Additions</h3>
-      <form id="add-form" method="POST" action="/additions/<%= id %>" >
+      <form id="add-form" method="POST" action="/additions/${id}" >
         <textarea placeholder="Add to story" name="addition" id="add-text"></textarea>
         <div>
           <output name="counter" class="counter" for="add-text">1000</output>
@@ -59,6 +63,7 @@ $(document).ready(function() {
       })
 
     };
+
   const loadStory = function(){
     $.ajax({
       method: 'GET',
@@ -71,13 +76,9 @@ $(document).ready(function() {
     })
   }
 
-
-
-
-
   loadStory();
 
-
+// functions for displaying an error on like and posting likes to database
   $('#additions-container').on('click','.like-button',function(e){
 
     const thisId=e.currentTarget.value;
@@ -89,7 +90,7 @@ $(document).ready(function() {
     }
     //hides error div
     $('#like-error').slideUp(300);
-
+    //if there is no issue post to the database
     $.ajax({
       method: "POST",
       url: `http://localhost:8080/additions/likes/${thisId}`,

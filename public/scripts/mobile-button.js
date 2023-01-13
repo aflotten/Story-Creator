@@ -10,6 +10,5 @@ $(document).ready(function() {
   document.addEventListener('scroll', function (event) {
     mobileMenu.removeClass( "active" );
   });
-  //have a placeholder bug that affects mobile menu
-  
+
 });

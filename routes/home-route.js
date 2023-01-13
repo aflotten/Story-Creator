@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const userQueries = require('../db/queries/users');
 
+//get method for the home page
 router.get('/', (req, res) => {
   userQueries.getUserById(req.session.userId)
       .then(user => {

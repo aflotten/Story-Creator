@@ -4,8 +4,7 @@ $(document).ready(function() {
   const additionInput = $('#add-text');
 
   /*checks charater count present in the input field
-  if over 1000 when color changes red and shows the
-  how much character count is over 1000*/
+  if over 1000 color changes red */
   additionInput.on('input', () => {
     const counter = additionInput.closest('form').children('div').children('output');
 
