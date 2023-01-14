@@ -75,8 +75,8 @@ const insertAddition = (data) => {
 // Delete an additions based on it's id
 const removeAddition = (addition_id) => {
   return db.query(`DELETE FROM additions WHERE id = $1`, [addition_id]).then((result) => {
-    console.log('test')
-    return result.rows[0]
+    console.log('test');
+    return result.rows[0];
   })
     .catch((err) => {
       console.log(err.message);
@@ -85,17 +85,17 @@ const removeAddition = (addition_id) => {
 //Delete all additions based on the story_id
 const removeAllAdditions = (story_id) => {
   return db.query(`DELETE FROM additions WHERE story_id = $1`, [story_id]).then((result) => {
-    return result.rows[0]
+    return result.rows[0];
   })
-  .catch((err) => {
-    console.log(err.message);
-  });
-}
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
 //Make an update to a story based on its id
 const updateStory = (story_id, body) => {
-  const dbParams = [story_id, body]
+  const dbParams = [story_id, body];
   return db.query(`UPDATE stories SET content = $2 WHERE stories.id = $1 RETURNING *;`, dbParams).then((result) => {
-    return result.rows[0]
+    return result.rows[0];
   })
     .catch((err) => {
       console.log(err.message);
