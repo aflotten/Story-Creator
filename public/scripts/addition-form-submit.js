@@ -35,6 +35,7 @@ $(document).ready(function() {
     /** checks to see if data fits the conditions for additions
   returns the error is not meet else return null **/
   const validator = (data) => {
+    console.log(data)
     const truedata = decodeURIComponent(data.split("=")[1]);
     const userByID  = document.getElementById("user-id").content;
 
@@ -47,8 +48,7 @@ $(document).ready(function() {
   };
 
   //additions form
-  $("#add-form").submit(function(event) {
-
+  $('main').on('submit',"#add-form",function(event){
     event.preventDefault();
     const form =$(this).serialize();
     const actionUrl = $(this).attr('action');
@@ -72,8 +72,6 @@ $(document).ready(function() {
         .done((response) => {
         loadlastAddition();
       });
-
-
 
   })
 })

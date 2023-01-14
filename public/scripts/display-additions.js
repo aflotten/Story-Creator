@@ -58,7 +58,6 @@ $(document).ready(function() {
         url: `/api/${id}/additions`
       })
       .done((response) => {
-        console.log(response)
         renderAdditions(response.additions);
       })
 
@@ -95,9 +94,7 @@ $(document).ready(function() {
       method: "POST",
       url: `http://localhost:8080/additions/likes/${thisId}`,
       success: function(data) {
-        console.log("==========", data);
         const {count} = data;
-        console.log(count);
         const elements = document.querySelectorAll(".like-count");
             for (i of elements) {
 
