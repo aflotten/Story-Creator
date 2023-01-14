@@ -32,7 +32,7 @@
     <%- include('partials/nav') %>
     <main>
 
-     
+
       <div class="error">
         <p></p>
       </div>
@@ -49,21 +49,4 @@
   <script defer src="/scripts/display-additions.js"></script>
   <script defer src="/scripts/addition-form-submit.js"></script>
 
-  <!-- <script>
-    const button=document.querySelector(".like-button")
-    button.addEventListener("click", (e) => {
-      console.log("ABC");
-      $.ajax({
-        method: "GET",
-        url: "http://localhost:8080/additions/likes/1",
-        //dataType: JSON,
-        success: function(data) {
-          const {count} = data;
-          console.log(e);
-          $(".like-button").text(Number(count) + 1);
-          console.log("DATA IS HERE:", data);
-        }
-      })
-    })
-  </script> -->
 </html>
