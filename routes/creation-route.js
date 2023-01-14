@@ -29,7 +29,6 @@ router.post('/', (req, res) => {
         } else {
           storyQueries.insertStory(data)
             .then(result => {
-              console.log(result);
               res.render('index', { userByID: user });
             })
             .catch(err => {

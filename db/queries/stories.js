@@ -75,7 +75,6 @@ const insertAddition = (data) => {
 // Delete an additions based on it's id
 const removeAddition = (addition_id) => {
   return db.query(`DELETE FROM additions WHERE id = $1`, [addition_id]).then((result) => {
-    console.log('test');
     return result.rows[0];
   })
     .catch((err) => {
