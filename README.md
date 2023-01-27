@@ -1,9 +1,9 @@
 Welcome to Story Creator!
 
-Story Creator is an interactive user application where users can begin and add to stories! The author of a story can choose to add contributions from other users to their own story! They can also post contributions to other users' stories. These contributions can recieve likes and be easily appended to the end of a starter story and built into a long tale! Once a story is marked complete by the original author, contributions can no longer be made.
+Story Creator is an interactive user application where users can begin and add to in-progress stories! The author of a story can choose to add contributions from other users to their own story! They can also post contributions to other users' stories. These contributions can recieve likes and be easily appended to the end of a starter story and built into a long tale! Once a story is marked complete by the original author, contributions can no longer be made.
 
 The application is equipped with many features including:
-- Secure registration and loggin. 
+- Secure registration and login. 
 - Fullscreen and mobile versions of the application.
 - Error handling
 - Nav bar scrolling
