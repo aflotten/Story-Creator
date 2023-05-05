@@ -12,6 +12,8 @@ ERD:
 
 <img width="901" alt="Screen Shot 2023-01-09 at 7 01 47 PM" src="https://user-images.githubusercontent.com/87041176/212490975-50d97fec-3ad5-4d1c-839d-12bc183fd076.png">
 
+## Preview
+![](/public/img/Story_creator_preview.gif)
 ## Getting Started
 
 1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
